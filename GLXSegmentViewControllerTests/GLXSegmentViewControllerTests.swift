@@ -1,6 +1,6 @@
 //
-//  GLXSegmentViewControllerTests.swift
-//  GLXSegmentViewControllerTests
+//  GLXSegmentedControlTests.swift
+//  GLXSegmentedControlTests
 //
 //  Created by si.ma on 05/01/2015.
 //  Copyright (c) 2015 si.ma. All rights reserved.
@@ -9,7 +9,7 @@
 import UIKit
 import XCTest
 
-class GLXSegmentViewControllerTests: XCTestCase {
+class GLXSegmentedControlTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

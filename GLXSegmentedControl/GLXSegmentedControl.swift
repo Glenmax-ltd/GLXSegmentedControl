@@ -1,6 +1,6 @@
 //
 //  SMBasicSegmentView.swift
-//  GLXSegmentViewController
+//  GLXSegmentedControlController
 //
 //  Created by Si Ma on 01/10/15.
 //  Copyright © 2015 Si Ma. All rights reserved.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class GLXSegmentView: UIControl {
+open class GLXSegmentedControl: UIControl {
 
     open var segmentAppearance: GLXSegmentAppearance?
 

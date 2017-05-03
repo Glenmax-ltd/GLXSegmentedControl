@@ -1,6 +1,6 @@
 //
 //  GLXSegmentConstants.swift
-//  GLXSegmentViewController
+//  GLXSegmentedControlController
 //
 //  Created by Si MA on 17/06/2016.
 //  Copyright © 2016 si.ma. All rights reserved.

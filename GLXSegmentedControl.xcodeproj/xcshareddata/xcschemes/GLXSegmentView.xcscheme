@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C195944F1BD91785008D80C0"
-               BuildableName = "GLXSegmentView.framework"
-               BlueprintName = "GLXSegmentView"
-               ReferencedContainer = "container:GLXSegmentViewController.xcodeproj">
+               BuildableName = "GLXSegmentedControl.framework"
+               BlueprintName = "GLXSegmentedControl"
+               ReferencedContainer = "container:GLXSegmentedControl.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,9 +46,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C195944F1BD91785008D80C0"
-            BuildableName = "GLXSegmentView.framework"
-            BlueprintName = "GLXSegmentView"
-            ReferencedContainer = "container:GLXSegmentViewController.xcodeproj">
+            BuildableName = "GLXSegmentedControl.framework"
+            BlueprintName = "GLXSegmentedControl"
+            ReferencedContainer = "container:GLXSegmentedControl.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -64,9 +64,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C195944F1BD91785008D80C0"
-            BuildableName = "GLXSegmentView.framework"
-            BlueprintName = "GLXSegmentView"
-            ReferencedContainer = "container:GLXSegmentViewController.xcodeproj">
+            BuildableName = "GLXSegmentedControl.framework"
+            BlueprintName = "GLXSegmentedControl"
+            ReferencedContainer = "container:GLXSegmentedControl.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

@@ -1,6 +1,6 @@
 //
 //  GLXSegmentAppearance.swift
-//  GLXSegmentViewController
+//  GLXSegmentedControl
 //
 //  Created by Si MA on 11/07/2016.
 //  Copyright © 2016 si.ma. All rights reserved.

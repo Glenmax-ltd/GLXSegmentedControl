@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4222124A1EBA574D0062E48D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4222122A1EBA574D0062E48D /* Info.plist */; };
 		4222124B1EBA574D0062E48D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4222122D1EBA574D0062E48D /* AppDelegate.swift */; };
 		4222124C1EBA574D0062E48D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4222122E1EBA574D0062E48D /* LaunchScreen.xib */; };
 		4222124D1EBA574D0062E48D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 422212301EBA574D0062E48D /* Main.storyboard */; };
@@ -24,14 +23,16 @@
 		422212581EBA574D0062E48D /* cloud_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 4222123D1EBA574D0062E48D /* cloud_light.png */; };
 		422212591EBA574D0062E48D /* cloud_light@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4222123E1EBA574D0062E48D /* cloud_light@2x.png */; };
 		4222125A1EBA574D0062E48D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4222123F1EBA574D0062E48D /* Images.xcassets */; };
-		4222125B1EBA574D0062E48D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 422212401EBA574D0062E48D /* Info.plist */; };
 		422212601EBA574D0062E48D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422212461EBA574D0062E48D /* ViewController.swift */; };
-		422212611EBA574D0062E48D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 422212481EBA574D0062E48D /* Info.plist */; };
-		422212681EBA577C0062E48D /* GLXSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422212641EBA577C0062E48D /* GLXSegment.swift */; };
-		422212691EBA577C0062E48D /* GLXSegmentAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422212651EBA577C0062E48D /* GLXSegmentAppearance.swift */; };
-		4222126A1EBA577C0062E48D /* GLXSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422212661EBA577C0062E48D /* GLXSegmentView.swift */; };
-		4222126B1EBA577C0062E48D /* GLXSegmentViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422212671EBA577C0062E48D /* GLXSegmentViewConstants.swift */; };
 		4222126C1EBA70870062E48D /* GLXSegmentViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422212491EBA574D0062E48D /* GLXSegmentViewControllerTests.swift */; };
+		42814DFD1EBA990400E6D518 /* GLXSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42814DF71EBA990400E6D518 /* GLXSegment.swift */; };
+		42814DFE1EBA990400E6D518 /* GLXSegmentAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42814DF81EBA990400E6D518 /* GLXSegmentAppearance.swift */; };
+		42814DFF1EBA990400E6D518 /* GLXSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42814DFA1EBA990400E6D518 /* GLXSegmentedControl.swift */; };
+		42814E001EBA990400E6D518 /* GLXSegmentedControlConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42814DFB1EBA990400E6D518 /* GLXSegmentedControlConstants.swift */; };
+		42814E021EBA992600E6D518 /* GLXSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42814DF71EBA990400E6D518 /* GLXSegment.swift */; };
+		42814E031EBA992600E6D518 /* GLXSegmentAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42814DF81EBA990400E6D518 /* GLXSegmentAppearance.swift */; };
+		42814E041EBA992600E6D518 /* GLXSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42814DFA1EBA990400E6D518 /* GLXSegmentedControl.swift */; };
+		42814E051EBA992600E6D518 /* GLXSegmentedControlConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42814DFB1EBA990400E6D518 /* GLXSegmentedControlConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,8 +46,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4222122A1EBA574D0062E48D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4222122B1EBA574D0062E48D /* GLXSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLXSegmentView.h; sourceTree = "<group>"; };
 		4222122D1EBA574D0062E48D /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4222122F1EBA574D0062E48D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		422212311EBA574D0062E48D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -67,13 +66,15 @@
 		422212461EBA574D0062E48D /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		422212481EBA574D0062E48D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		422212491EBA574D0062E48D /* GLXSegmentViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GLXSegmentViewControllerTests.swift; sourceTree = "<group>"; };
-		422212641EBA577C0062E48D /* GLXSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GLXSegment.swift; sourceTree = "<group>"; };
-		422212651EBA577C0062E48D /* GLXSegmentAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GLXSegmentAppearance.swift; sourceTree = "<group>"; };
-		422212661EBA577C0062E48D /* GLXSegmentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GLXSegmentView.swift; sourceTree = "<group>"; };
-		422212671EBA577C0062E48D /* GLXSegmentViewConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GLXSegmentViewConstants.swift; sourceTree = "<group>"; };
+		42814DF71EBA990400E6D518 /* GLXSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GLXSegment.swift; sourceTree = "<group>"; };
+		42814DF81EBA990400E6D518 /* GLXSegmentAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GLXSegmentAppearance.swift; sourceTree = "<group>"; };
+		42814DF91EBA990400E6D518 /* GLXSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLXSegmentedControl.h; sourceTree = "<group>"; };
+		42814DFA1EBA990400E6D518 /* GLXSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GLXSegmentedControl.swift; sourceTree = "<group>"; };
+		42814DFB1EBA990400E6D518 /* GLXSegmentedControlConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GLXSegmentedControlConstants.swift; sourceTree = "<group>"; };
+		42814DFC1EBA990400E6D518 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6957D7211A5A997A007AC81B /* GLXSegmentViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GLXSegmentViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6957D7361A5A997A007AC81B /* GLXSegmentViewControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GLXSegmentViewControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C19594501BD91785008D80C0 /* GLXSegmentView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GLXSegmentView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C19594501BD91785008D80C0 /* GLXSegmentedControl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GLXSegmentedControl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,19 +102,9 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		422212291EBA574D0062E48D /* GLXSegmentView */ = {
-			isa = PBXGroup;
-			children = (
-				4222122A1EBA574D0062E48D /* Info.plist */,
-				4222122B1EBA574D0062E48D /* GLXSegmentView.h */,
-			);
-			path = GLXSegmentView;
-			sourceTree = "<group>";
-		};
 		4222122C1EBA574D0062E48D /* GLXSegmentViewController */ = {
 			isa = PBXGroup;
 			children = (
-				422212631EBA577C0062E48D /* GLXSegmentView */,
 				4222122D1EBA574D0062E48D /* AppDelegate.swift */,
 				4222122E1EBA574D0062E48D /* LaunchScreen.xib */,
 				422212301EBA574D0062E48D /* Main.storyboard */,
@@ -153,21 +144,23 @@
 			path = GLXSegmentViewControllerTests;
 			sourceTree = "<group>";
 		};
-		422212631EBA577C0062E48D /* GLXSegmentView */ = {
+		42814DF61EBA990400E6D518 /* GLXSegmentedControl */ = {
 			isa = PBXGroup;
 			children = (
-				422212641EBA577C0062E48D /* GLXSegment.swift */,
-				422212651EBA577C0062E48D /* GLXSegmentAppearance.swift */,
-				422212661EBA577C0062E48D /* GLXSegmentView.swift */,
-				422212671EBA577C0062E48D /* GLXSegmentViewConstants.swift */,
+				42814DF71EBA990400E6D518 /* GLXSegment.swift */,
+				42814DF81EBA990400E6D518 /* GLXSegmentAppearance.swift */,
+				42814DF91EBA990400E6D518 /* GLXSegmentedControl.h */,
+				42814DFA1EBA990400E6D518 /* GLXSegmentedControl.swift */,
+				42814DFB1EBA990400E6D518 /* GLXSegmentedControlConstants.swift */,
+				42814DFC1EBA990400E6D518 /* Info.plist */,
 			);
-			path = GLXSegmentView;
+			path = GLXSegmentedControl;
 			sourceTree = "<group>";
 		};
 		6957D7181A5A997A007AC81B = {
 			isa = PBXGroup;
 			children = (
-				422212291EBA574D0062E48D /* GLXSegmentView */,
+				42814DF61EBA990400E6D518 /* GLXSegmentedControl */,
 				4222122C1EBA574D0062E48D /* GLXSegmentViewController */,
 				422212471EBA574D0062E48D /* GLXSegmentViewControllerTests */,
 				6957D7221A5A997A007AC81B /* Products */,
@@ -179,7 +172,7 @@
 			children = (
 				6957D7211A5A997A007AC81B /* GLXSegmentViewController.app */,
 				6957D7361A5A997A007AC81B /* GLXSegmentViewControllerTests.xctest */,
-				C19594501BD91785008D80C0 /* GLXSegmentView.framework */,
+				C19594501BD91785008D80C0 /* GLXSegmentedControl.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -232,9 +225,9 @@
 			productReference = 6957D7361A5A997A007AC81B /* GLXSegmentViewControllerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		C195944F1BD91785008D80C0 /* GLXSegmentView */ = {
+		C195944F1BD91785008D80C0 /* GLXSegmentedControl */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C19594571BD91785008D80C0 /* Build configuration list for PBXNativeTarget "GLXSegmentView" */;
+			buildConfigurationList = C19594571BD91785008D80C0 /* Build configuration list for PBXNativeTarget "GLXSegmentedControl" */;
 			buildPhases = (
 				C195944B1BD91785008D80C0 /* Sources */,
 				C195944C1BD91785008D80C0 /* Frameworks */,
@@ -245,9 +238,9 @@
 			);
 			dependencies = (
 			);
-			name = GLXSegmentView;
+			name = GLXSegmentedControl;
 			productName = SMSegmentView;
-			productReference = C19594501BD91785008D80C0 /* GLXSegmentView.framework */;
+			productReference = C19594501BD91785008D80C0 /* GLXSegmentedControl.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -276,7 +269,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6957D71C1A5A997A007AC81B /* Build configuration list for PBXProject "GLXSegmentViewController" */;
+			buildConfigurationList = 6957D71C1A5A997A007AC81B /* Build configuration list for PBXProject "GLXSegmentedControl" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -291,7 +284,7 @@
 			targets = (
 				6957D7201A5A997A007AC81B /* GLXSegmentViewController */,
 				6957D7351A5A997A007AC81B /* GLXSegmentViewControllerTests */,
-				C195944F1BD91785008D80C0 /* GLXSegmentView */,
+				C195944F1BD91785008D80C0 /* GLXSegmentedControl */,
 			);
 		};
 /* End PBXProject section */
@@ -303,7 +296,6 @@
 			files = (
 				4222124F1EBA574D0062E48D /* bulb@2x.png in Resources */,
 				4222125A1EBA574D0062E48D /* Images.xcassets in Resources */,
-				422212611EBA574D0062E48D /* Info.plist in Resources */,
 				4222124E1EBA574D0062E48D /* bulb.png in Resources */,
 				422212541EBA574D0062E48D /* clip_light.png in Resources */,
 				422212561EBA574D0062E48D /* cloud.png in Resources */,
@@ -312,12 +304,10 @@
 				422212591EBA574D0062E48D /* cloud_light@2x.png in Resources */,
 				422212581EBA574D0062E48D /* cloud_light.png in Resources */,
 				4222124D1EBA574D0062E48D /* Main.storyboard in Resources */,
-				4222125B1EBA574D0062E48D /* Info.plist in Resources */,
 				422212501EBA574D0062E48D /* bulb_light.png in Resources */,
 				422212571EBA574D0062E48D /* cloud@2x.png in Resources */,
 				4222124C1EBA574D0062E48D /* LaunchScreen.xib in Resources */,
 				422212551EBA574D0062E48D /* clip_light@2x.png in Resources */,
-				4222124A1EBA574D0062E48D /* Info.plist in Resources */,
 				422212531EBA574D0062E48D /* clip@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -343,12 +333,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				422212681EBA577C0062E48D /* GLXSegment.swift in Sources */,
-				4222126B1EBA577C0062E48D /* GLXSegmentViewConstants.swift in Sources */,
-				4222126A1EBA577C0062E48D /* GLXSegmentView.swift in Sources */,
 				422212601EBA574D0062E48D /* ViewController.swift in Sources */,
-				422212691EBA577C0062E48D /* GLXSegmentAppearance.swift in Sources */,
 				4222124B1EBA574D0062E48D /* AppDelegate.swift in Sources */,
+				42814DFD1EBA990400E6D518 /* GLXSegment.swift in Sources */,
+				42814DFF1EBA990400E6D518 /* GLXSegmentedControl.swift in Sources */,
+				42814E001EBA990400E6D518 /* GLXSegmentedControlConstants.swift in Sources */,
+				42814DFE1EBA990400E6D518 /* GLXSegmentAppearance.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,6 +354,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42814E041EBA992600E6D518 /* GLXSegmentedControl.swift in Sources */,
+				42814E021EBA992600E6D518 /* GLXSegment.swift in Sources */,
+				42814E051EBA992600E6D518 /* GLXSegmentedControlConstants.swift in Sources */,
+				42814E031EBA992600E6D518 /* GLXSegmentAppearance.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,11 +549,11 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = GLXSegmentView/Info.plist;
+				INFOPLIST_FILE = GLXSegmentedControl/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = glx.GLXSegmentView;
+				PRODUCT_BUNDLE_IDENTIFIER = glx.GLXSegmentedControl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
@@ -580,11 +574,11 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = GLXSegmentView/Info.plist;
+				INFOPLIST_FILE = GLXSegmentedControl/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = glx.GLXSegmentView;
+				PRODUCT_BUNDLE_IDENTIFIER = glx.GLXSegmentedControl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
@@ -596,7 +590,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6957D71C1A5A997A007AC81B /* Build configuration list for PBXProject "GLXSegmentViewController" */ = {
+		6957D71C1A5A997A007AC81B /* Build configuration list for PBXProject "GLXSegmentedControl" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6957D73E1A5A997A007AC81B /* Debug */,
@@ -623,7 +617,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C19594571BD91785008D80C0 /* Build configuration list for PBXNativeTarget "GLXSegmentView" */ = {
+		C19594571BD91785008D80C0 /* Build configuration list for PBXNativeTarget "GLXSegmentedControl" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C19594551BD91785008D80C0 /* Debug */,

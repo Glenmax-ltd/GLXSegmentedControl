@@ -1,5 +1,5 @@
 //
-//  GLXSegmentViewController
+//  GLXSegmentedControlController
 //
 //  Created by Si Ma on 05/01/2015.
 //  Copyright (c) 2015 Si Ma. All rights reserved.
@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var segmentView: GLXSegmentView!
+    var segmentView: GLXSegmentedControl!
     var margin: CGFloat = 10.0
 
     override func viewDidLoad() {
@@ -30,16 +30,18 @@ class ViewController: UIViewController {
         
         
         /*
-          Init GLXSegmentView
+          Init GLXSegmentedControl
           Set divider colour and width here if there is a need
          */
         let segmentFrame = CGRect(x: self.margin, y: 120.0, width: self.view.frame.size.width - self.margin*2, height: 40.0)
-        self.segmentView = GLXSegmentView(frame: segmentFrame, dividerColour: UIColor(white: 0.95, alpha: 0.3), dividerWidth: 1.0, segmentAppearance: appearance)
+        self.segmentView = GLXSegmentedControl(frame: segmentFrame, dividerColour: UIColor(white: 0.95, alpha: 0.3), dividerWidth: 1.0, segmentAppearance: appearance)
         self.segmentView.backgroundColor = UIColor.clear
         
         self.segmentView.layer.cornerRadius = 5.0
         self.segmentView.layer.borderColor = UIColor(white: 0.85, alpha: 1.0).cgColor
         self.segmentView.layer.borderWidth = 1.0
+        
+        self.segmentView.organiseMode = .vertical
 
         // Add segments
         self.segmentView.addSegmentWithTitle("Clip", onSelectionImage: UIImage(named: "clip_light"), offSelectionImage: UIImage(named: "clip"))
@@ -54,7 +56,7 @@ class ViewController: UIViewController {
     }
     
     // GLXSegment selector for .ValueChanged
-    func selectSegmentInSegmentView(segmentView: GLXSegmentView) {
+    func selectSegmentInSegmentView(segmentView: GLXSegmentedControl) {
         /*
         Replace the following line to implement what you want the app to do after the segment gets tapped.
         */
