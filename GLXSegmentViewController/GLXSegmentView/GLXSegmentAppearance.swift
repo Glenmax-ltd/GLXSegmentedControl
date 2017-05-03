@@ -1,6 +1,6 @@
 //
-//  SMSegmentAppearance.swift
-//  SMSegmentViewController
+//  GLXSegmentAppearance.swift
+//  GLXSegmentViewController
 //
 //  Created by Si MA on 11/07/2016.
 //  Copyright © 2016 si.ma. All rights reserved.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class SMSegmentAppearance {
+open class GLXSegmentAppearance {
     
     // PROPERTIES
     open var segmentOnSelectionColour: UIColor

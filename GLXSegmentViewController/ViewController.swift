@@ -1,5 +1,5 @@
 //
-//  SMSegmentViewController
+//  GLXSegmentViewController
 //
 //  Created by Si Ma on 05/01/2015.
 //  Copyright (c) 2015 Si Ma. All rights reserved.
@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var segmentView: SMSegmentView!
+    var segmentView: GLXSegmentView!
     var margin: CGFloat = 10.0
 
     override func viewDidLoad() {
@@ -17,11 +17,11 @@ class ViewController: UIViewController {
         self.view.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
 
         /*
-          Use SMSegmentAppearance to set segment related UI properties.
+          Use GLXSegmentAppearance to set segment related UI properties.
           Each property has its own default value, so you only need to specify the ones you are interested.
         */
         
-        let appearance = SMSegmentAppearance()
+        let appearance = GLXSegmentAppearance()
         appearance.segmentOnSelectionColour = UIColor(red: 245.0/255.0, green: 174.0/255.0, blue: 63.0/255.0, alpha: 1.0)
         appearance.segmentOffSelectionColour = UIColor.white
         appearance.titleOnSelectionFont = UIFont.systemFont(ofSize: 12.0)
@@ -30,11 +30,11 @@ class ViewController: UIViewController {
         
         
         /*
-          Init SMsegmentView
+          Init GLXSegmentView
           Set divider colour and width here if there is a need
          */
         let segmentFrame = CGRect(x: self.margin, y: 120.0, width: self.view.frame.size.width - self.margin*2, height: 40.0)
-        self.segmentView = SMSegmentView(frame: segmentFrame, dividerColour: UIColor(white: 0.95, alpha: 0.3), dividerWidth: 1.0, segmentAppearance: appearance)
+        self.segmentView = GLXSegmentView(frame: segmentFrame, dividerColour: UIColor(white: 0.95, alpha: 0.3), dividerWidth: 1.0, segmentAppearance: appearance)
         self.segmentView.backgroundColor = UIColor.clear
         
         self.segmentView.layer.cornerRadius = 5.0
@@ -53,8 +53,8 @@ class ViewController: UIViewController {
         self.view.addSubview(self.segmentView)
     }
     
-    // SMSegment selector for .ValueChanged
-    func selectSegmentInSegmentView(segmentView: SMSegmentView) {
+    // GLXSegment selector for .ValueChanged
+    func selectSegmentInSegmentView(segmentView: GLXSegmentView) {
         /*
         Replace the following line to implement what you want the app to do after the segment gets tapped.
         */

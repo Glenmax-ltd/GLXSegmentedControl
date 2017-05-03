@@ -1,6 +1,6 @@
 //
 //  SMBasicSegmentView.swift
-//  SMSegmentViewController
+//  GLXSegmentViewController
 //
 //  Created by Si Ma on 01/10/15.
 //  Copyright © 2015 Si Ma. All rights reserved.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-open class SMSegmentView: UIControl {
+open class GLXSegmentView: UIControl {
 
-    open var segmentAppearance: SMSegmentAppearance?
+    open var segmentAppearance: GLXSegmentAppearance?
 
     // Divider colour & width
     open var dividerColour: UIColor = UIColor.lightGray {
@@ -42,7 +42,7 @@ open class SMSegmentView: UIControl {
         }
     }
 
-    open var organiseMode: SMSegmentOrganiseMode = .horizontal {
+    open var organiseMode: GLXSegmentOrganiseMode = .horizontal {
         didSet {
             if self.organiseMode != oldValue {
                 self.setNeedsDisplay()
@@ -56,25 +56,25 @@ open class SMSegmentView: UIControl {
         }
     }
 
-    fileprivate var segments: [SMSegment] = []
-    fileprivate var selectedSegment: SMSegment?
+    fileprivate var segments: [GLXSegment] = []
+    fileprivate var selectedSegment: GLXSegment?
 
 
     // INITIALISER
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.layer.masksToBounds = true
-        self.segmentAppearance = SMSegmentAppearance()
+        self.segmentAppearance = GLXSegmentAppearance()
     }
 
     override public init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.clear
         self.layer.masksToBounds = true
-        self.segmentAppearance = SMSegmentAppearance()
+        self.segmentAppearance = GLXSegmentAppearance()
     }
 
-    public init(frame: CGRect, dividerColour: UIColor, dividerWidth: CGFloat, segmentAppearance: SMSegmentAppearance) {
+    public init(frame: CGRect, dividerColour: UIColor, dividerWidth: CGFloat, segmentAppearance: GLXSegmentAppearance) {
 
         super.init(frame: frame)
 
@@ -90,7 +90,7 @@ open class SMSegmentView: UIControl {
 
     // MARK: Actions
     // MARK: Select/deselect Segment
-    fileprivate func selectSegment(_ segment: SMSegment) {
+    fileprivate func selectSegment(_ segment: GLXSegment) {
         segment.setSelected(true)
         self.selectedSegment = segment
         self.sendActions(for: .valueChanged)
@@ -107,7 +107,7 @@ open class SMSegmentView: UIControl {
 
     open func insertSegmentWithTitle(_ title: String?, onSelectionImage: UIImage?, offSelectionImage: UIImage?, index: Int) {
 
-        let segment = SMSegment(appearance: self.segmentAppearance)
+        let segment = GLXSegment(appearance: self.segmentAppearance)
 
         segment.title = title
         segment.onSelectionImage = onSelectionImage

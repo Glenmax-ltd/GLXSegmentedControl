@@ -1,5 +1,5 @@
 //
-//  SMSegment.swift
+//  GLXSegment.swift
 //
 //  Created by Si MA on 03/01/2015.
 //  Copyright (c) 2015 Si Ma. All rights reserved.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class SMSegment: UIView {
+open class GLXSegment: UIView {
     
     // UI components
     fileprivate var imageView: UIImageView = UIImageView()
@@ -28,16 +28,16 @@ open class SMSegment: UIView {
     open var offSelectionImage: UIImage?
     
     // Appearance
-    open var appearance: SMSegmentAppearance?
+    open var appearance: GLXSegmentAppearance?
     
-    internal var didSelectSegment: ((_ segment: SMSegment)->())?
+    internal var didSelectSegment: ((_ segment: GLXSegment)->())?
     
     open internal(set) var index: Int = 0
     open fileprivate(set) var isSelected: Bool = false
     
     
     // Init
-    internal init(appearance: SMSegmentAppearance?) {
+    internal init(appearance: GLXSegmentAppearance?) {
         
         self.appearance = appearance
         

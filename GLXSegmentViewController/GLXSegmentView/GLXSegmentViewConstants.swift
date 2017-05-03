@@ -1,6 +1,6 @@
 //
-//  SMSegmentConstants.swift
-//  SMSegmentViewController
+//  GLXSegmentConstants.swift
+//  GLXSegmentViewController
 //
 //  Created by Si MA on 17/06/2016.
 //  Copyright © 2016 si.ma. All rights reserved.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct SMSegmentedControlKeys {
+public struct GLXSegmentedControlKeys {
     
     // Image/text margin to segment top/bottom
     static let kContentVerticalMargin = "VerticalMargin"
@@ -25,7 +25,7 @@ public struct SMSegmentedControlKeys {
     static let kTitleFont = "TitleFont"
 }
 
-public enum SMSegmentOrganiseMode: Int {
+public enum GLXSegmentOrganiseMode: Int {
     case horizontal
     case vertical
 }
