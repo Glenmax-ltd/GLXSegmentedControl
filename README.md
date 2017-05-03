@@ -3,8 +3,8 @@
 # GLXSegmentedControl Description
 - Custom segmented control for iOS 8 and above.
 - Written in Swift.
-- Support both images and text.
-- Support vertically organise segments
+- Supports both images and text.
+- Support for vertically organised segments
 - More customisible than UISegmentedControl and easier to expand with new style.
 
 # Installation
@@ -16,10 +16,10 @@ Add `github "glenmax-ltd/GLXSegmentedControl"` to your Cartfile.
 Add `pod 'SMSegmentView'` to your Podfile.
 
 ## Manual
-#### Step 1
-Drag `SMSegmentView.swift` and `SMSegment.swift` into your Xcode project.
+Drag `SMSegmentView.swift`, `SMSegment.swift`, `GLXSegmentAppearance.swift` and `GLXSegmentedControlConstants.swift` into your Xcode project.
 
-#### Step 2
+# Usage
+#### Step 1
 Initialise GLXSegmentedControl:
 You can simply use `GLXSegmentedControl(frame:)` to initialise your segment view by using the default properties. 
 But mostly, you may want to use `GLXSegmentedControl(frame:, dividerColour:, dividerWidth:, segmentAppearance:)` to make it look more customised.
@@ -37,12 +37,12 @@ appearance.contentVerticalMargin = 10.0
 let segmentedControl = GLXSegmentView(frame: SomeFrame, dividerColour: UIColor(white: 0.95, alpha: 0.3), dividerWidth: 1.0, segmentAppearance: appearance)
 ```
 
-#### Step 3
+#### Step 2
 Add action for UIControlEvents.ValueChanged, and implement the action method.
 
 E.g. `segmentedControl.addTarget(self, action: #selector(YourViewController.selectSegmentInSegmentView(_:)), forControlEvents: .ValueChanged)`
 
-#### Step 4
+#### Step 3
 Add segments to your segmented control.
 
 E.g.:
