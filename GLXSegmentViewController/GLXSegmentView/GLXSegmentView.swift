@@ -90,10 +90,12 @@ open class GLXSegmentView: UIControl {
 
     // MARK: Actions
     // MARK: Select/deselect Segment
-    fileprivate func selectSegment(_ segment: GLXSegment) {
+    fileprivate func selectSegment(_ segment: GLXSegment, fireAction:Bool = false) {
         segment.setSelected(true)
         self.selectedSegment = segment
-        self.sendActions(for: .valueChanged)
+        if fireAction {
+            self.sendActions(for: .valueChanged)
+        }
     }
     fileprivate func deselectSegment() {
         self.selectedSegment?.setSelected(false)
@@ -113,10 +115,10 @@ open class GLXSegmentView: UIControl {
         segment.onSelectionImage = onSelectionImage
         segment.offSelectionImage = offSelectionImage
         segment.index = index
-        segment.didSelectSegment = { [weak self] segment in
-            if self!.selectedSegment != segment {
-                self!.deselectSegment()
-                self!.selectSegment(segment)
+        segment.didSelectSegment = { [unowned self] segment in
+            if self.selectedSegment != segment {
+                self.deselectSegment()
+                self.selectSegment(segment, fireAction:true)
             }
         }
         segment.setupUIElements()

@@ -27,11 +27,11 @@
 		4222125B1EBA574D0062E48D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 422212401EBA574D0062E48D /* Info.plist */; };
 		422212601EBA574D0062E48D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422212461EBA574D0062E48D /* ViewController.swift */; };
 		422212611EBA574D0062E48D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 422212481EBA574D0062E48D /* Info.plist */; };
-		422212621EBA574D0062E48D /* GLXSegmentViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422212491EBA574D0062E48D /* GLXSegmentViewControllerTests.swift */; };
 		422212681EBA577C0062E48D /* GLXSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422212641EBA577C0062E48D /* GLXSegment.swift */; };
 		422212691EBA577C0062E48D /* GLXSegmentAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422212651EBA577C0062E48D /* GLXSegmentAppearance.swift */; };
 		4222126A1EBA577C0062E48D /* GLXSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422212661EBA577C0062E48D /* GLXSegmentView.swift */; };
 		4222126B1EBA577C0062E48D /* GLXSegmentViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422212671EBA577C0062E48D /* GLXSegmentViewConstants.swift */; };
+		4222126C1EBA70870062E48D /* GLXSegmentViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422212491EBA574D0062E48D /* GLXSegmentViewControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -343,7 +343,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				422212621EBA574D0062E48D /* GLXSegmentViewControllerTests.swift in Sources */,
 				422212681EBA577C0062E48D /* GLXSegment.swift in Sources */,
 				4222126B1EBA577C0062E48D /* GLXSegmentViewConstants.swift in Sources */,
 				4222126A1EBA577C0062E48D /* GLXSegmentView.swift in Sources */,
@@ -357,6 +356,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4222126C1EBA70870062E48D /* GLXSegmentViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,7 +491,7 @@
 				INFOPLIST_FILE = GLXSegmentViewController/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "sima.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = glx.GLXSegmentViewController;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -504,7 +504,7 @@
 				INFOPLIST_FILE = GLXSegmentViewController/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "sima.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = glx.GLXSegmentViewController;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -559,7 +559,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = sima.SMSegmentView;
+				PRODUCT_BUNDLE_IDENTIFIER = glx.GLXSegmentView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
@@ -584,7 +584,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = sima.SMSegmentView;
+				PRODUCT_BUNDLE_IDENTIFIER = glx.GLXSegmentView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
