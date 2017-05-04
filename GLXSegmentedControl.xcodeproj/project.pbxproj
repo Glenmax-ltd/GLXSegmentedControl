@@ -28,11 +28,9 @@
 		42814DFD1EBA990400E6D518 /* GLXSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42814DF71EBA990400E6D518 /* GLXSegment.swift */; };
 		42814DFE1EBA990400E6D518 /* GLXSegmentAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42814DF81EBA990400E6D518 /* GLXSegmentAppearance.swift */; };
 		42814DFF1EBA990400E6D518 /* GLXSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42814DFA1EBA990400E6D518 /* GLXSegmentedControl.swift */; };
-		42814E001EBA990400E6D518 /* GLXSegmentedControlConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42814DFB1EBA990400E6D518 /* GLXSegmentedControlConstants.swift */; };
 		42814E021EBA992600E6D518 /* GLXSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42814DF71EBA990400E6D518 /* GLXSegment.swift */; };
 		42814E031EBA992600E6D518 /* GLXSegmentAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42814DF81EBA990400E6D518 /* GLXSegmentAppearance.swift */; };
 		42814E041EBA992600E6D518 /* GLXSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42814DFA1EBA990400E6D518 /* GLXSegmentedControl.swift */; };
-		42814E051EBA992600E6D518 /* GLXSegmentedControlConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42814DFB1EBA990400E6D518 /* GLXSegmentedControlConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,7 +68,6 @@
 		42814DF81EBA990400E6D518 /* GLXSegmentAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GLXSegmentAppearance.swift; sourceTree = "<group>"; };
 		42814DF91EBA990400E6D518 /* GLXSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLXSegmentedControl.h; sourceTree = "<group>"; };
 		42814DFA1EBA990400E6D518 /* GLXSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GLXSegmentedControl.swift; sourceTree = "<group>"; };
-		42814DFB1EBA990400E6D518 /* GLXSegmentedControlConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GLXSegmentedControlConstants.swift; sourceTree = "<group>"; };
 		42814DFC1EBA990400E6D518 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6957D7211A5A997A007AC81B /* GLXSegmentViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GLXSegmentViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6957D7361A5A997A007AC81B /* GLXSegmentViewControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GLXSegmentViewControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,7 +148,6 @@
 				42814DF81EBA990400E6D518 /* GLXSegmentAppearance.swift */,
 				42814DF91EBA990400E6D518 /* GLXSegmentedControl.h */,
 				42814DFA1EBA990400E6D518 /* GLXSegmentedControl.swift */,
-				42814DFB1EBA990400E6D518 /* GLXSegmentedControlConstants.swift */,
 				42814DFC1EBA990400E6D518 /* Info.plist */,
 			);
 			path = GLXSegmentedControl;
@@ -337,7 +333,6 @@
 				4222124B1EBA574D0062E48D /* AppDelegate.swift in Sources */,
 				42814DFD1EBA990400E6D518 /* GLXSegment.swift in Sources */,
 				42814DFF1EBA990400E6D518 /* GLXSegmentedControl.swift in Sources */,
-				42814E001EBA990400E6D518 /* GLXSegmentedControlConstants.swift in Sources */,
 				42814DFE1EBA990400E6D518 /* GLXSegmentAppearance.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -356,7 +351,6 @@
 			files = (
 				42814E041EBA992600E6D518 /* GLXSegmentedControl.swift in Sources */,
 				42814E021EBA992600E6D518 /* GLXSegment.swift in Sources */,
-				42814E051EBA992600E6D518 /* GLXSegmentedControlConstants.swift in Sources */,
 				42814E031EBA992600E6D518 /* GLXSegmentAppearance.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

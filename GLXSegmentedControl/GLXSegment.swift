@@ -58,9 +58,9 @@ open class GLXSegment: UIView {
     
     internal func setupUIElements() {
         if let appearance = self.appearance {
-            self.backgroundColor = appearance.segmentOffSelectionColour
+            self.backgroundColor = appearance.segmentOffSelectionColor
             self.label.font = appearance.titleOffSelectionFont
-            self.label.textColor = appearance.titleOffSelectionColour
+            self.label.textColor = appearance.titleOffSelectionColor
         }
         self.imageView.image = self.offSelectionImage
     }
@@ -102,13 +102,13 @@ open class GLXSegment: UIView {
     internal func setSelected(_ selected: Bool) {
         self.isSelected = selected
         if selected == true {
-            self.backgroundColor = self.appearance?.segmentOnSelectionColour
-            self.label.textColor = self.appearance?.titleOnSelectionColour
+            self.backgroundColor = self.appearance?.segmentOnSelectionColor
+            self.label.textColor = self.appearance?.titleOnSelectionColor
             self.imageView.image = self.onSelectionImage
         }
         else {
-            self.backgroundColor = self.appearance?.segmentOffSelectionColour
-            self.label.textColor = self.appearance?.titleOffSelectionColour
+            self.backgroundColor = self.appearance?.segmentOffSelectionColor
+            self.label.textColor = self.appearance?.titleOffSelectionColor
             self.imageView.image = self.offSelectionImage
         }
     }
@@ -116,7 +116,7 @@ open class GLXSegment: UIView {
     // MARK: Handle touch
     override open  func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if self.isSelected == false {
-            self.backgroundColor = self.appearance?.segmentTouchDownColour
+            self.backgroundColor = self.appearance?.segmentTouchDownColor
         }
     }
     

@@ -22,8 +22,8 @@ class ViewController: UIViewController {
         */
         
         let appearance = GLXSegmentAppearance()
-        appearance.segmentOnSelectionColour = UIColor(red: 245.0/255.0, green: 174.0/255.0, blue: 63.0/255.0, alpha: 1.0)
-        appearance.segmentOffSelectionColour = UIColor.white
+        appearance.segmentOnSelectionColor = UIColor(red: 245.0/255.0, green: 174.0/255.0, blue: 63.0/255.0, alpha: 1.0)
+        appearance.segmentOffSelectionColor = UIColor.white
         appearance.titleOnSelectionFont = UIFont.systemFont(ofSize: 12.0)
         appearance.titleOffSelectionFont = UIFont.systemFont(ofSize: 12.0)
         appearance.contentVerticalMargin = 10.0
@@ -31,10 +31,10 @@ class ViewController: UIViewController {
         
         /*
           Init GLXSegmentedControl
-          Set divider colour and width here if there is a need
+          Set divider Color and width here if there is a need
          */
         let segmentFrame = CGRect(x: self.margin, y: 120.0, width: self.view.frame.size.width - self.margin*2, height: 40.0)
-        self.segmentView = GLXSegmentedControl(frame: segmentFrame, dividerColour: UIColor(white: 0.95, alpha: 0.3), dividerWidth: 1.0, segmentAppearance: appearance)
+        self.segmentView = GLXSegmentedControl(frame: segmentFrame, dividerColor: UIColor(white: 0.95, alpha: 0.3), dividerWidth: 1.0, segmentAppearance: appearance)
         self.segmentView.backgroundColor = UIColor.clear
         
         self.segmentView.layer.cornerRadius = 5.0

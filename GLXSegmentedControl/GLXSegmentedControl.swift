@@ -8,12 +8,17 @@
 
 import UIKit
 
+public enum GLXSegmentOrganiseMode: Int {
+    case horizontal
+    case vertical
+}
+
 open class GLXSegmentedControl: UIControl {
 
     open var segmentAppearance: GLXSegmentAppearance?
 
-    // Divider colour & width
-    open var dividerColour: UIColor = UIColor.lightGray {
+    // Divider Color & width
+    open var dividerColor: UIColor = UIColor.lightGray {
         didSet {
             self.setNeedsDisplay()
         }
@@ -74,11 +79,11 @@ open class GLXSegmentedControl: UIControl {
         self.segmentAppearance = GLXSegmentAppearance()
     }
 
-    public init(frame: CGRect, dividerColour: UIColor, dividerWidth: CGFloat, segmentAppearance: GLXSegmentAppearance) {
+    public init(frame: CGRect, dividerColor: UIColor, dividerWidth: CGFloat, segmentAppearance: GLXSegmentAppearance) {
 
         super.init(frame: frame)
 
-        self.dividerColour = dividerColour
+        self.dividerColor = dividerColor
         self.dividerWidth = dividerWidth
         
         self.segmentAppearance = segmentAppearance
@@ -227,7 +232,7 @@ open class GLXSegmentedControl: UIControl {
             }
 
             context.addPath(path)
-            context.setStrokeColor(self.dividerColour.cgColor)
+            context.setStrokeColor(self.dividerColor.cgColor)
             context.setLineWidth(self.dividerWidth)
             context.drawPath(using: CGPathDrawingMode.stroke)
         }
