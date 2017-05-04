@@ -27,7 +27,7 @@ Drag `GLXSegmentedControl.swift`, `GLXSegment.swift` and `GLXSegmentAppearance.s
 #### Step 1
 Initialise GLXSegmentedControl:
 You can simply use `GLXSegmentedControl(frame:)` to initialise your segment view by using the default properties. 
-But mostly, you may want to use `GLXSegmentedControl(frame:, dividerColour:, dividerWidth:, segmentAppearance:)` to make it look more customised.
+But mostly, you may want to use `GLXSegmentedControl(frame:, segmentAppearance:)` to make it look more customised.
 The parameter `segmentAppearance:` reads a `GLXSegmentAppearance` instance. You can find what attributes it supports in `GLXSegmentAppearance` class.
 
 E.g.:
