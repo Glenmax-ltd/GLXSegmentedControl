@@ -16,11 +16,11 @@ to your Cartfile.
 
 ## CocoaPods
 Add 
-`pod 'SMSegmentView'` 
+`pod 'GLXSegmentedControl'` 
 to your Podfile.
 
 ## Manual
-Drag `SMSegmentView.swift`, `SMSegment.swift` and `GLXSegmentAppearance.swift` into your Xcode project.
+Drag `GLXSegmentedControl.swift`, `GLXSegment.swift` and `GLXSegmentAppearance.swift` into your Xcode project.
 
 # Usage
 #### Step 1
