@@ -8,6 +8,23 @@
 
 import UIKit
 
+extension UILabel {
+    
+    func fontFitsCurrentFrame(_ font:UIFont) -> Bool {
+        let attributes = [NSFontAttributeName:font]
+        if let size = self.text?.boundingRect(with: CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude), options: .usesLineFragmentOrigin, attributes: attributes, context: nil) {
+            if size.width > frame.size.width {
+                return false
+            }
+            if size.height > frame.size.height {
+                return false
+            }
+        }
+        return true
+    }
+    
+}
+
 public enum GLXSegmentOrganiseMode: Int {
     case horizontal
     case vertical
@@ -15,17 +32,19 @@ public enum GLXSegmentOrganiseMode: Int {
 
 open class GLXSegmentedControl: UIControl {
 
-    open var segmentAppearance: GLXSegmentAppearance?
+    open var segmentAppearance: GLXSegmentAppearance
+    
+    open var enforceEqualFontForLabels = true
 
     // Divider Color & width
-    open var dividerColor: UIColor = UIColor.lightGray {
-        didSet {
-            self.setNeedsDisplay()
+    open var dividerColor: UIColor {
+        get {
+            return self.segmentAppearance.dividerColor
         }
     }
-    open var dividerWidth: CGFloat = 1.0 {
-        didSet {
-            self.updateSegmentsLayout()
+    open var dividerWidth: CGFloat {
+        get {
+            return self.segmentAppearance.dividerWidth
         }
     }
 
@@ -63,30 +82,27 @@ open class GLXSegmentedControl: UIControl {
 
     fileprivate var segments: [GLXSegment] = []
     fileprivate var selectedSegment: GLXSegment?
+    
+    fileprivate var trailingConstraint: NSLayoutConstraint? // this is used as the last contraint for segment
 
 
     // INITIALISER
     required public init?(coder aDecoder: NSCoder) {
+        self.segmentAppearance = GLXSegmentAppearance()
         super.init(coder: aDecoder)
         self.layer.masksToBounds = true
-        self.segmentAppearance = GLXSegmentAppearance()
     }
 
     override public init(frame: CGRect) {
+        self.segmentAppearance = GLXSegmentAppearance()
         super.init(frame: frame)
         self.backgroundColor = UIColor.clear
         self.layer.masksToBounds = true
-        self.segmentAppearance = GLXSegmentAppearance()
     }
 
-    public init(frame: CGRect, dividerColor: UIColor, dividerWidth: CGFloat, segmentAppearance: GLXSegmentAppearance) {
-
-        super.init(frame: frame)
-
-        self.dividerColor = dividerColor
-        self.dividerWidth = dividerWidth
-        
+    public init(frame: CGRect, segmentAppearance: GLXSegmentAppearance) {
         self.segmentAppearance = segmentAppearance
+        super.init(frame: frame)
 
         self.backgroundColor = UIColor.clear
         self.layer.masksToBounds = true
@@ -115,7 +131,8 @@ open class GLXSegmentedControl: UIControl {
     open func insertSegmentWithTitle(_ title: String?, onSelectionImage: UIImage?, offSelectionImage: UIImage?, index: Int) {
 
         let segment = GLXSegment(appearance: self.segmentAppearance)
-
+        
+        segment.translatesAutoresizingMaskIntoConstraints = false
         segment.title = title
         segment.onSelectionImage = onSelectionImage
         segment.offSelectionImage = offSelectionImage
@@ -132,7 +149,47 @@ open class GLXSegmentedControl: UIControl {
         self.segments.insert(segment, at: index)
 
         self.addSubview(segment)
-        self.layoutSubviews()
+        
+        // now we setup constraints for segment
+        
+        if self.organiseMode == .horizontal {
+            segment.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+            segment.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+            
+            if segments.count == 1 {
+                // this is first segment so we set constraint to leading anchor
+                segment.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+            }
+            else {
+                // trailing contraint was set before so now we remove it
+                // because we need to set it to new segment
+                trailingConstraint?.isActive = false
+                let previousSegment = segments[segments.count - 2]
+                segment.leadingAnchor.constraint(equalTo: previousSegment.trailingAnchor, constant: self.dividerWidth).isActive = true
+                segment.widthAnchor.constraint(equalTo: previousSegment.widthAnchor).isActive = true
+                trailingConstraint = segment.trailingAnchor.constraint(equalTo: self.trailingAnchor)
+                trailingConstraint?.isActive = true
+            }
+        }
+        else {
+            segment.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+            segment.trailingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+            
+            if segments.count == 1 {
+                // this is first segment so we set constraint to leading anchor
+                segment.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+            }
+            else {
+                // trailing contraint was set before so now we remove it
+                // because we need to set it to new segment
+                trailingConstraint?.isActive = false
+                let previousSegment = segments[segments.count - 2]
+                segment.topAnchor.constraint(equalTo: previousSegment.bottomAnchor, constant: self.dividerWidth).isActive = true
+                segment.heightAnchor.constraint(equalTo: previousSegment.heightAnchor).isActive = true
+                trailingConstraint = segment.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+                trailingConstraint?.isActive = true
+            }
+        }
     }
     
     // MARK: Remove Segment
@@ -145,7 +202,9 @@ open class GLXSegmentedControl: UIControl {
         self.resetSegmentIndicesWithIndex(index, by: -1)
         let segment = self.segments.remove(at: index)
         segment.removeFromSuperview()
-        self.updateSegmentsLayout()
+        
+        // FIXME: update autolayout constraints
+        // otherwise this function does not perform well!
     }
     
     fileprivate func resetSegmentIndicesWithIndex(_ index: Int, by: Int) {
@@ -161,40 +220,72 @@ open class GLXSegmentedControl: UIControl {
     // MARK: Update layout
     open override func layoutSubviews() {
         super.layoutSubviews()
-        self.updateSegmentsLayout()
-    }
-
-    fileprivate func updateSegmentsLayout() {
         
-        guard self.segments.count > 0 else {
-            return
+        // FIXME: I do not yet understand why line above is not sufficient
+        // to put subviews into their frames
+        for subview in self.subviews {
+            subview.layoutIfNeeded()
         }
-
-        if self.segments.count > 1 {
-            if self.organiseMode == .horizontal {
-                let segmentWidth = ceil((self.frame.size.width - self.dividerWidth * CGFloat(self.segments.count-1)) / CGFloat(self.segments.count))
-
-                var originX: CGFloat = 0.0
-                for segment in self.segments {
-                    segment.frame = CGRect(x: originX, y: 0.0, width: segmentWidth, height: self.frame.size.height)
-                    originX += segmentWidth + self.dividerWidth
+        labelFontAdj: if enforceEqualFontForLabels {
+            var labelsToCheck = [UILabel]()
+            for segment in segments {
+                guard
+                    let title = segment.title,
+                    title != ""
+                    else {continue}
+                labelsToCheck.append(segment.label)
+            }
+            
+            guard labelsToCheck.count > 0 else {break labelFontAdj}
+            var minimumScaleFactor:CGFloat = 0.0
+            var selectedFont = segmentAppearance.titleOnSelectionFont
+            var nonSelectedFont = segmentAppearance.titleOffSelectionFont
+            for label in labelsToCheck {
+                minimumScaleFactor = max(minimumScaleFactor, label.minimumScaleFactor)
+            }
+            
+            var selectedFound = false
+            var nonSelectedFound = false
+            
+            for var currentScaleFactor in stride(from: 1.0, to: minimumScaleFactor, by: -0.05) {
+                let newSelectedFont  = selectedFont.withSize(selectedFont.pointSize * currentScaleFactor)
+                let newNonSelectedFont = nonSelectedFont.withSize(nonSelectedFont.pointSize * currentScaleFactor)
+                var trySelected = !selectedFound
+                var tryNonSelected = !nonSelectedFound
+                for label in labelsToCheck {
+                    if trySelected {
+                        trySelected = trySelected && label.fontFitsCurrentFrame(newSelectedFont)
+                    }
+                    if tryNonSelected {
+                        tryNonSelected = tryNonSelected && label.fontFitsCurrentFrame(newNonSelectedFont)
+                    }
+                    if !(trySelected || tryNonSelected) {
+                        break
+                    }
+                }
+                if trySelected {
+                    selectedFont = newSelectedFont
+                    selectedFound = true
+                }
+                if tryNonSelected {
+                    nonSelectedFont = newNonSelectedFont
+                    nonSelectedFound = true
+                }
+                if selectedFound && nonSelectedFound {
+                    break
                 }
             }
-            else {
-                let segmentHeight = (self.frame.size.height - self.dividerWidth * CGFloat(self.segments.count-1)) / CGFloat(self.segments.count)
-
-                var originY: CGFloat = 0.0
-                for segment in self.segments {
-                    segment.frame = CGRect(x: 0.0, y: originY, width: self.frame.size.width, height: segmentHeight)
-                    originY += segmentHeight + self.dividerWidth
+            segmentAppearance.titleOnSelectionFont = selectedFont
+            segmentAppearance.titleOffSelectionFont = nonSelectedFont
+            for segment in segments {
+                if segment.isSelected {
+                    segment.label.font = segmentAppearance.titleOnSelectionFont
+                }
+                else {
+                    segment.label.font = segmentAppearance.titleOffSelectionFont
                 }
             }
         }
-        else {
-            self.segments[0].frame = CGRect(x: 0.0, y: 0.0, width: self.frame.size.width, height: self.frame.size.height)
-        }
-
-        self.setNeedsDisplay()
     }
 
     // MARK: Drawing Segment Dividers

@@ -38,6 +38,9 @@ open class GLXSegmentAppearance {
     open var titleOffSelectionFont: UIFont
     
     open var contentVerticalMargin: CGFloat
+    open var dividerWidth: CGFloat
+    
+    open var dividerColor: UIColor
     
     
     // Mark: INITIALISER
@@ -52,9 +55,12 @@ open class GLXSegmentAppearance {
         self.titleOffSelectionFont = UIFont.systemFont(ofSize: 17.0)
         
         self.contentVerticalMargin = 5.0
+        
+        self.dividerWidth = 1.0
+        self.dividerColor = UIColor.lightGray
     }
     
-    public init(contentVerticalMargin: CGFloat, segmentOnSelectionColor: UIColor, segmentOffSelectionColor: UIColor, titleOnSelectionColor: UIColor, titleOffSelectionColor: UIColor, titleOnSelectionFont: UIFont, titleOffSelectionFont: UIFont) {
+    public init(contentVerticalMargin: CGFloat, segmentOnSelectionColor: UIColor, segmentOffSelectionColor: UIColor, titleOnSelectionColor: UIColor, titleOffSelectionColor: UIColor, titleOnSelectionFont: UIFont, titleOffSelectionFont: UIFont, dividerWidth:CGFloat) {
         
         self.contentVerticalMargin = contentVerticalMargin
         
@@ -65,5 +71,8 @@ open class GLXSegmentAppearance {
         self.titleOffSelectionColor = titleOffSelectionColor
         self.titleOnSelectionFont = titleOnSelectionFont
         self.titleOffSelectionFont = titleOffSelectionFont
+        
+        self.dividerWidth = dividerWidth
+        self.dividerColor = UIColor.lightGray
     }
 }

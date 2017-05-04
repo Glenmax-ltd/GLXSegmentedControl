@@ -10,14 +10,28 @@ import UIKit
 open class GLXSegment: UIView {
     
     // UI components
-    fileprivate var imageView: UIImageView = UIImageView()
-    fileprivate var label: UILabel = UILabel()
+    fileprivate lazy var imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = UIViewContentMode.scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    lazy var label: UILabel = {
+        let label = UILabel()
+        label.textAlignment = NSTextAlignment.center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.adjustsFontSizeToFitWidth = true
+        label.baselineAdjustment = .alignCenters
+        label.setContentCompressionResistancePriority(UILayoutPriorityDefaultLow, for: .horizontal)
+        return label
+    }()
+    
     
     // Title
     open var title: String? {
         didSet {
             self.label.text = self.title
-            self.layoutSubviews()
         }
     }
     
@@ -33,69 +47,84 @@ open class GLXSegment: UIView {
     open internal(set) var index: Int = 0
     open fileprivate(set) var isSelected: Bool = false
     
-    
     // Init
     internal init(appearance: GLXSegmentAppearance?) {
         
         self.appearance = appearance
         
         super.init(frame: CGRect.zero)
-        self.addUIElementsToView()
     }
     
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    fileprivate func addUIElementsToView() {
-        
-        self.imageView.contentMode = UIViewContentMode.scaleAspectFit
-        self.addSubview(self.imageView)
-        
-        self.label.textAlignment = NSTextAlignment.center
-        self.addSubview(self.label)
-    }
-    
     internal func setupUIElements() {
-        if let appearance = self.appearance {
-            self.backgroundColor = appearance.segmentOffSelectionColor
-            self.label.font = appearance.titleOffSelectionFont
-            self.label.textColor = appearance.titleOffSelectionColor
-        }
-        self.imageView.image = self.offSelectionImage
-    }
-    
-    
-    // MARK: Update label and imageView frame
-    open override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        var distanceBetween: CGFloat = 0.0
         
         var verticalMargin: CGFloat = 0.0
         if let appearance = self.appearance {
             verticalMargin = appearance.contentVerticalMargin
         }
         
-        var imageViewFrame = CGRect(x: 0.0, y: verticalMargin, width: 0.0, height: self.frame.size.height - verticalMargin*2)
-        if self.onSelectionImage != nil || self.offSelectionImage != nil {
-            // Set imageView as a square
-            imageViewFrame.size.width = self.frame.size.height - verticalMargin*2
-            distanceBetween = 5.0
+        let imagePresent = (self.offSelectionImage != nil) || (self.onSelectionImage != nil)
+        var titlePresent = false
+        if let title = self.title {
+            titlePresent = (title != "")
+        }
+        if imagePresent && titlePresent {
+            // we have both image and title so we need to center them together
+            let view = UIView(frame: CGRect.zero) // this will be used to hold the image and label inside
+            
+            view.translatesAutoresizingMaskIntoConstraints = false
+            
+            view.addSubview(self.imageView)
+            view.addSubview(self.label)
+            
+            self.imageView.image = self.offSelectionImage
+            
+            view.leadingAnchor.constraint(equalTo: self.imageView.leadingAnchor).isActive = true
+            view.trailingAnchor.constraint(equalTo: self.label.trailingAnchor).isActive = true
+            self.label.leadingAnchor.constraint(equalTo: self.imageView.trailingAnchor, constant: 3.0).isActive = true // this is used to separate image and label
+            
+            view.topAnchor.constraint(lessThanOrEqualTo: self.imageView.topAnchor).isActive = true
+            view.topAnchor.constraint(lessThanOrEqualTo: self.label.topAnchor).isActive = true
+            
+            view.centerYAnchor.constraint(equalTo: self.imageView.centerYAnchor).isActive = true
+            view.centerYAnchor.constraint(equalTo: self.label.centerYAnchor).isActive = true
+            
+            self.addSubview(view)
+            
+            self.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+            self.topAnchor.constraint(lessThanOrEqualTo: view.topAnchor, constant:-verticalMargin).isActive = true
+            self.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+            self.leadingAnchor.constraint(lessThanOrEqualTo: view.leadingAnchor, constant:-2).isActive = true
+        }
+        else if imagePresent {
+            // only image is present
+            self.addSubview(self.imageView)
+            self.imageView.image = self.offSelectionImage
+            self.centerXAnchor.constraint(equalTo: self.imageView.centerXAnchor).isActive = true
+            self.centerYAnchor.constraint(equalTo: self.imageView.centerYAnchor).isActive = true
+            self.topAnchor.constraint(lessThanOrEqualTo: self.imageView.topAnchor, constant: -verticalMargin).isActive = true
+            self.leadingAnchor.constraint(lessThanOrEqualTo: self.imageView.leadingAnchor).isActive = true
+        }
+        else if titlePresent {
+            // only label is present
+            self.addSubview(self.label)
+            self.centerXAnchor.constraint(equalTo: self.label.centerXAnchor).isActive = true
+            self.centerYAnchor.constraint(equalTo: self.label.centerYAnchor).isActive = true
+            self.topAnchor.constraint(lessThanOrEqualTo: self.label.topAnchor, constant: -verticalMargin).isActive = true
+            self.leadingAnchor.constraint(lessThanOrEqualTo: self.label.leadingAnchor, constant:-2).isActive = true
         }
         
-        // If there's no text, align image in the centre
-        // Otherwise align text & image in the centre
-        self.label.sizeToFit()
-        if self.label.frame.size.width == 0.0 {
-            imageViewFrame.origin.x = max((self.frame.size.width - imageViewFrame.size.width) / 2.0, 0.0)
-        }
-        else {
-            imageViewFrame.origin.x = max((self.frame.size.width - imageViewFrame.size.width - self.label.frame.size.width) / 2.0 - distanceBetween, 0.0)
+        if let appearance = self.appearance {
+            self.backgroundColor = appearance.segmentOffSelectionColor
+            if titlePresent {
+                self.label.font = appearance.titleOffSelectionFont
+                self.label.textColor = appearance.titleOffSelectionColor
+            }
         }
         
-        self.imageView.frame = imageViewFrame
-        self.label.frame = CGRect(x: imageViewFrame.origin.x + imageViewFrame.size.width + distanceBetween, y: verticalMargin, width: self.label.frame.size.width, height: self.frame.size.height - verticalMargin * 2)
     }
     
     // MARK: Selections
@@ -104,11 +133,13 @@ open class GLXSegment: UIView {
         if selected == true {
             self.backgroundColor = self.appearance?.segmentOnSelectionColor
             self.label.textColor = self.appearance?.titleOnSelectionColor
+            self.label.font = self.appearance?.titleOnSelectionFont
             self.imageView.image = self.onSelectionImage
         }
         else {
             self.backgroundColor = self.appearance?.segmentOffSelectionColor
             self.label.textColor = self.appearance?.titleOffSelectionColor
+            self.label.font = self.appearance?.titleOffSelectionFont
             self.imageView.image = self.offSelectionImage
         }
     }
