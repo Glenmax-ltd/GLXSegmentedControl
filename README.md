@@ -10,13 +10,17 @@
 # Installation
 
 ## Carthage
-Add `github "glenmax-ltd/GLXSegmentedControl"` to your Cartfile.
+Add 
+`github "glenmax-ltd/GLXSegmentedControl"` 
+to your Cartfile.
 
 ## CocoaPods
-Add `pod 'SMSegmentView'` to your Podfile.
+Add 
+`pod 'SMSegmentView'` 
+to your Podfile.
 
 ## Manual
-Drag `SMSegmentView.swift`, `SMSegment.swift`, `GLXSegmentAppearance.swift` and `GLXSegmentedControlConstants.swift` into your Xcode project.
+Drag `SMSegmentView.swift`, `SMSegment.swift` and `GLXSegmentAppearance.swift` into your Xcode project.
 
 # Usage
 #### Step 1
