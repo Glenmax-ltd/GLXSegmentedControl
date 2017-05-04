@@ -1,10 +1,11 @@
 <p align="center"><img src ="/Screenshots/example_1.png"/></p>
 
 # GLXSegmentedControl Description
-- Custom segmented control for iOS 8 and above.
+- Custom segmented control for iOS 9 and above.
 - Written in Swift.
 - Supports both images and text.
-- Support for vertically organised segments
+- Supports vertically organised segments.
+- If font size needs to be lowered for one segment, it can automatically adjust font in other segments.
 - More customisible than UISegmentedControl and easier to expand with new style.
 
 # Installation
