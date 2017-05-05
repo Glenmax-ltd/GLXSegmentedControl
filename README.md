@@ -62,8 +62,6 @@ You can organise all segments vertically by setting the `organiseMode` as `.vert
 
 E.g. `segmentedControl.organiseMode = .vertical`
 
-<p align="center"><img src ="/Screenshots/example_vertical.png"/></p>
-
 # Screenshots
 <p align="center"><img src ="/Screenshots/example_2.png"/></p>
 <p align="center"><img src ="/Screenshots/example_3.png"/></p>
