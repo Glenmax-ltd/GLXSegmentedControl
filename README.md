@@ -1,6 +1,7 @@
+#GLXSegmentedControl
 <p align="center"><img src ="/Screenshots/example_4.png"/></p>
 
-# GLXSegmentedControl Description
+## Description
 - Custom segmented control for iOS 9 and above.
 - Written in Swift.
 - Supports both images and text.
@@ -8,22 +9,22 @@
 - If font size needs to be lowered for one segment, it can automatically adjust font in other segments.
 - More customisible than UISegmentedControl and easier to expand with new style.
 
-# Installation
+## Installation
 
-## Carthage
+### Carthage
 Add 
 `github "glenmax-ltd/GLXSegmentedControl"` 
 to your Cartfile.
 
-## CocoaPods
+### CocoaPods
 Add 
 `pod 'GLXSegmentedControl'` 
 to your Podfile.
 
-## Manual
+### Manual
 Drag `GLXSegmentedControl.swift`, `GLXSegment.swift` and `GLXSegmentAppearance.swift` into your Xcode project.
 
-# Usage
+## Usage
 #### Step 1
 Initialise GLXSegmentedControl:
 You can simply use `GLXSegmentedControl(frame:)` to initialise your segment view by using the default properties. 

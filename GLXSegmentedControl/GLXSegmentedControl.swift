@@ -247,7 +247,7 @@ open class GLXSegmentedControl: UIControl {
             var selectedFound = false
             var nonSelectedFound = false
             
-            for var currentScaleFactor in stride(from: 1.0, to: minimumScaleFactor, by: -0.05) {
+            for currentScaleFactor in stride(from: 1.0, to: minimumScaleFactor, by: -0.05) {
                 let newSelectedFont  = selectedFont.withSize(selectedFont.pointSize * currentScaleFactor)
                 let newNonSelectedFont = nonSelectedFont.withSize(nonSelectedFont.pointSize * currentScaleFactor)
                 var trySelected = !selectedFound

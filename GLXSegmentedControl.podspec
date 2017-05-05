@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 
-  s.name         = "GLXSegmentView"
+  s.name         = "GLXSegmentedControl"
   s.version      = "0.0.2"
   s.summary      = "Custom segmented control for iOS 9 and above"
 
@@ -11,17 +11,17 @@ Pod::Spec.new do |s|
                    More customisible than UISegmentedControl and easier to expand with new style.
                    DESC
 
-  s.homepage     = "https://github.com/glenmax-ltd/GLXSegmentView"
+  s.homepage     = "https://github.com/glenmax-ltd/GLXSegmentedControl"
   s.license      = { :type => "MIT", :file => "LICENSE.md" }
   s.authors       = { "allenbryan11" => "", "Glenmax" => "support@glenmax.com" }
   s.platform     = :ios, "9.0"
 
   s.ios.deployment_target = "9.0"
 
-  s.source       = { :git => "https://github.com/glenmax-ltd/GLXSegmentView.git", :branch => "master" }
+  s.source       = { :git => "https://github.com/glenmax-ltd/GLXSegmentedControl.git", :branch => "master" }
 
 
-  s.source_files  = "GLXSegmentViewController/GLXSegmentView/*.swift"
+  s.source_files  = "GLXSegmentedControl/*.swift"
   s.requires_arc = true
   s.frameworks = 'UIKit'
   

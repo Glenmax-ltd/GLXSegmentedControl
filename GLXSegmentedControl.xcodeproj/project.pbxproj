@@ -25,6 +25,9 @@
 		4222125A1EBA574D0062E48D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4222123F1EBA574D0062E48D /* Images.xcassets */; };
 		422212601EBA574D0062E48D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422212461EBA574D0062E48D /* ViewController.swift */; };
 		4222126C1EBA70870062E48D /* GLXSegmentViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422212491EBA574D0062E48D /* GLXSegmentViewControllerTests.swift */; };
+		42297F641EBC8EFE00C20B61 /* GLXSegmentedControl.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 42297F611EBC8EFE00C20B61 /* GLXSegmentedControl.podspec */; };
+		42297F651EBC8EFE00C20B61 /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = 42297F621EBC8EFE00C20B61 /* LICENSE.md */; };
+		42297F661EBC8EFE00C20B61 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 42297F631EBC8EFE00C20B61 /* README.md */; };
 		42814DFD1EBA990400E6D518 /* GLXSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42814DF71EBA990400E6D518 /* GLXSegment.swift */; };
 		42814DFE1EBA990400E6D518 /* GLXSegmentAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42814DF81EBA990400E6D518 /* GLXSegmentAppearance.swift */; };
 		42814DFF1EBA990400E6D518 /* GLXSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42814DFA1EBA990400E6D518 /* GLXSegmentedControl.swift */; };
@@ -64,6 +67,9 @@
 		422212461EBA574D0062E48D /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		422212481EBA574D0062E48D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		422212491EBA574D0062E48D /* GLXSegmentViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GLXSegmentViewControllerTests.swift; sourceTree = "<group>"; };
+		42297F611EBC8EFE00C20B61 /* GLXSegmentedControl.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GLXSegmentedControl.podspec; sourceTree = "<group>"; };
+		42297F621EBC8EFE00C20B61 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
+		42297F631EBC8EFE00C20B61 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		42814DF71EBA990400E6D518 /* GLXSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GLXSegment.swift; sourceTree = "<group>"; };
 		42814DF81EBA990400E6D518 /* GLXSegmentAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GLXSegmentAppearance.swift; sourceTree = "<group>"; };
 		42814DF91EBA990400E6D518 /* GLXSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLXSegmentedControl.h; sourceTree = "<group>"; };
@@ -156,6 +162,9 @@
 		6957D7181A5A997A007AC81B = {
 			isa = PBXGroup;
 			children = (
+				42297F611EBC8EFE00C20B61 /* GLXSegmentedControl.podspec */,
+				42297F621EBC8EFE00C20B61 /* LICENSE.md */,
+				42297F631EBC8EFE00C20B61 /* README.md */,
 				42814DF61EBA990400E6D518 /* GLXSegmentedControl */,
 				4222122C1EBA574D0062E48D /* GLXSegmentViewController */,
 				422212471EBA574D0062E48D /* GLXSegmentViewControllerTests */,
@@ -301,6 +310,7 @@
 				422212581EBA574D0062E48D /* cloud_light.png in Resources */,
 				4222124D1EBA574D0062E48D /* Main.storyboard in Resources */,
 				422212501EBA574D0062E48D /* bulb_light.png in Resources */,
+				42297F641EBC8EFE00C20B61 /* GLXSegmentedControl.podspec in Resources */,
 				422212571EBA574D0062E48D /* cloud@2x.png in Resources */,
 				4222124C1EBA574D0062E48D /* LaunchScreen.xib in Resources */,
 				422212551EBA574D0062E48D /* clip_light@2x.png in Resources */,
@@ -332,7 +342,9 @@
 				422212601EBA574D0062E48D /* ViewController.swift in Sources */,
 				4222124B1EBA574D0062E48D /* AppDelegate.swift in Sources */,
 				42814DFD1EBA990400E6D518 /* GLXSegment.swift in Sources */,
+				42297F661EBC8EFE00C20B61 /* README.md in Sources */,
 				42814DFF1EBA990400E6D518 /* GLXSegmentedControl.swift in Sources */,
+				42297F651EBC8EFE00C20B61 /* LICENSE.md in Sources */,
 				42814DFE1EBA990400E6D518 /* GLXSegmentAppearance.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
