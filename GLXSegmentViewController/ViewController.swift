@@ -2,7 +2,7 @@
 //  GLXSegmentedControlController
 //
 //  Created by Si Ma on 05/01/2015.
-//  Copyright (c) 2015 Si Ma. All rights reserved.
+//  Copyright (c) 2015 Si Ma and Glenmax Ltd. All rights reserved.
 //
 
 import UIKit
@@ -42,7 +42,7 @@ class ViewController: UIViewController {
         self.segmentView.layer.borderWidth = 1.0
 
         // Add segments
-        self.segmentView.addSegmentWithTitle("Clipppppppppp", onSelectionImage: nil, offSelectionImage: nil)
+        self.segmentView.addSegmentWithTitle("Clip", onSelectionImage: UIImage(named: "clip_light"), offSelectionImage: UIImage(named: "clip"))
         self.segmentView.addSegmentWithTitle("Blub", onSelectionImage: UIImage(named: "bulb_light"), offSelectionImage: UIImage(named: "bulb"))
         self.segmentView.addSegmentWithTitle("Cloud", onSelectionImage: UIImage(named: "cloud_light"), offSelectionImage: UIImage(named: "cloud"))
         

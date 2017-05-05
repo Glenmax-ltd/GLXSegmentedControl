@@ -1,6 +1,6 @@
 //
 //  Created by Si Ma on 05/01/2015.
-//  Copyright (c) 2015 Si Ma. All rights reserved.
+//  Copyright (c) 2015 Si Ma and Glenmax Ltd. All rights reserved.
 //
 
 import UIKit

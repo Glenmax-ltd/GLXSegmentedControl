@@ -3,7 +3,7 @@
 //  GLXSegmentedControlTests
 //
 //  Created by si.ma on 05/01/2015.
-//  Copyright (c) 2015 si.ma. All rights reserved.
+//  Copyright (c) 2015 si.ma and Glenmax Ltd. All rights reserved.
 //
 
 import UIKit

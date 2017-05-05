@@ -3,7 +3,7 @@
 //  GLXSegmentedControl
 //
 //  Created by mlaskowski on 22/10/15.
-//  Copyright © 2015 si.ma. All rights reserved.
+//  Copyright © 2015 si.ma and Glenmax Ltd. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

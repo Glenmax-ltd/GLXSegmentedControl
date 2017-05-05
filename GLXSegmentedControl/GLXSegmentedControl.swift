@@ -1,9 +1,9 @@
 //
-//  SMBasicSegmentView.swift
+//  GLXSegmentedControl.swift
 //  GLXSegmentedControlController
 //
 //  Created by Si Ma on 01/10/15.
-//  Copyright © 2015 Si Ma. All rights reserved.
+//  Copyright © 2015 Si Ma and Glenmax Ltd. All rights reserved.
 //
 
 import UIKit
@@ -263,14 +263,17 @@ open class GLXSegmentedControl: UIControl {
                         break
                     }
                 }
+                
                 if trySelected {
                     selectedFont = newSelectedFont
                     selectedFound = true
                 }
+                
                 if tryNonSelected {
                     nonSelectedFont = newNonSelectedFont
                     nonSelectedFound = true
                 }
+                
                 if selectedFound && nonSelectedFound {
                     break
                 }
