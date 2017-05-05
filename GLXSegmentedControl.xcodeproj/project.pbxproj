@@ -72,7 +72,6 @@
 		42297F631EBC8EFE00C20B61 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		42814DF71EBA990400E6D518 /* GLXSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GLXSegment.swift; sourceTree = "<group>"; };
 		42814DF81EBA990400E6D518 /* GLXSegmentAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GLXSegmentAppearance.swift; sourceTree = "<group>"; };
-		42814DF91EBA990400E6D518 /* GLXSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLXSegmentedControl.h; sourceTree = "<group>"; };
 		42814DFA1EBA990400E6D518 /* GLXSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GLXSegmentedControl.swift; sourceTree = "<group>"; };
 		42814DFC1EBA990400E6D518 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6957D7211A5A997A007AC81B /* GLXSegmentViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GLXSegmentViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,7 +151,6 @@
 			children = (
 				42814DF71EBA990400E6D518 /* GLXSegment.swift */,
 				42814DF81EBA990400E6D518 /* GLXSegmentAppearance.swift */,
-				42814DF91EBA990400E6D518 /* GLXSegmentedControl.h */,
 				42814DFA1EBA990400E6D518 /* GLXSegmentedControl.swift */,
 				42814DFC1EBA990400E6D518 /* Info.plist */,
 			);
