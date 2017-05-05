@@ -1,4 +1,4 @@
-<p align="center"><img src ="/Screenshots/example_1.png"/></p>
+<p align="center"><img src ="/Screenshots/example_4.png"/></p>
 
 # GLXSegmentedControl Description
 - Custom segmented control for iOS 9 and above.
