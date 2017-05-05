@@ -1,4 +1,4 @@
-#GLXSegmentedControl
+# GLXSegmentedControl
 <p align="center"><img src ="/Screenshots/example_4.png"/></p>
 
 ## Description
