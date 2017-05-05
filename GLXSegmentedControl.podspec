@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "GLXSegmentedControl"
-  s.version      = "2.0"
+  s.version      = "2.0.1"
   s.summary      = "Custom segmented control for iOS 9 and above"
 
   s.description  = <<-DESC
@@ -20,7 +20,8 @@ Pod::Spec.new do |s|
 
   s.source       = {
                     :git => "https://github.com/glenmax-ltd/GLXSegmentedControl.git",
-                    :tag => s.version.to_s }
+                    :tag => s.version.to_s,
+                    :branch => "master"}
 
 
   s.source_files  = "GLXSegmentedControl/*.swift"
