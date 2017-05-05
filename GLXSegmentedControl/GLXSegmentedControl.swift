@@ -190,6 +190,13 @@ open class GLXSegmentedControl: UIControl {
             }
         }
     }
+    
+    // MARK: Access segments
+    
+    func segment(at index:Int) -> GLXSegment {
+        assert(index >= 0 && index < self.segments.count, "Index (\(index)) is out of range")
+        return segments[index]
+    }
 
     // MARK: UI
     // MARK: Update layout
