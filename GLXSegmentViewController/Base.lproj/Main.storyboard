@@ -40,27 +40,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qNX-AN-cvf">
-                                <rect key="frame" x="16" y="331" width="51" height="30"/>
+                                <rect key="frame" x="100" y="318" width="175" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="remove"/>
+                                <state key="normal" title="Remove random segment"/>
                                 <connections>
                                     <action selector="removeSegment:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FRt-MG-uJR"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="clb-Sp-Mqc">
-                                <rect key="frame" x="162" y="331" width="51" height="30"/>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rcj-Mc-yaB">
+                                <rect key="frame" x="133" y="356" width="108" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="remove"/>
+                                <state key="normal" title="Insert segment "/>
                                 <connections>
-                                    <action selector="removeSegment:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ffx-OK-wHK"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rcj-Mc-yaB">
-                                <rect key="frame" x="308" y="331" width="51" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="remove"/>
-                                <connections>
-                                    <action selector="removeSegment:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Seo-zH-E9z"/>
+                                    <action selector="addSegment:" destination="BYZ-38-t0r" eventType="touchUpInside" id="P1o-Bh-H3v"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -80,6 +72,10 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="insertButton" destination="rcj-Mc-yaB" id="hOl-0N-AJ1"/>
+                        <outlet property="removeButton" destination="qNX-AN-cvf" id="Sw4-jy-GKT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

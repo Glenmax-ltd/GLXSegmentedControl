@@ -121,11 +121,11 @@ open class GLXSegmentedControl: UIControl {
     }
 
     // MARK: Add Segment
-    open func addSegment(withTitle title: String?, onSelectionImage: UIImage?, offSelectionImage: UIImage?) {
-        self.insertSegment(withTitle:title, onSelectionImage: onSelectionImage, offSelectionImage: offSelectionImage, index: self.segments.count)
+    open func addSegment(withTitle title: String?, onSelectionImage: UIImage?, offSelectionImage: UIImage?, animated:Bool = false) {
+        self.insertSegment(withTitle:title, onSelectionImage: onSelectionImage, offSelectionImage: offSelectionImage, index: self.segments.count, animated: animated)
     }
 
-    open func insertSegment(withTitle title: String?, onSelectionImage: UIImage?, offSelectionImage: UIImage?, index: Int) {
+    open func insertSegment(withTitle title: String?, onSelectionImage: UIImage?, offSelectionImage: UIImage?, index: Int, animated:Bool = false) {
 
         let segment = GLXSegment(appearance: self.segmentAppearance)
         
@@ -150,10 +150,15 @@ open class GLXSegmentedControl: UIControl {
         // now we setup constraints for segment
         
         self.updateConstraintsForSegmentInsertion(at: index)
+        if animated {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.layoutSubviews()
+            })
+        }
     }
     
     // MARK: Remove Segment
-    open func removeSegment(at index: Int) {
+    open func removeSegment(at index: Int, animated:Bool = false) {
         assert(index >= 0 && index < self.segments.count, "Index (\(index)) is out of range")
         
         if index == self.selectedSegmentIndex {
@@ -170,6 +175,11 @@ open class GLXSegmentedControl: UIControl {
         // if some segments remain we need to update constraints
         
         self.updateConstraintsForSegmentRemoval(at: index)
+        if animated {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.layoutSubviews()
+            })
+        }
     }
     
     fileprivate func resetSegmentIndices(withIndex index: Int, by: Int) {
@@ -284,7 +294,20 @@ open class GLXSegmentedControl: UIControl {
         })
         
         for constraint in constraintsToRemove {
+            if organiseMode == .horizontal {
+                // check if we are not trying to remove top or bottom
+                if (constraint.secondAttribute == .top) || (constraint.secondAttribute == .bottom) {
+                    continue
+                }
+            }
+            else {
+                // check if we are not trying remove top or bottom
+                if (constraint.secondAttribute == .left) || (constraint.secondAttribute == .right) {
+                    continue
+                }
+            }
             constraint.isActive = false
+            
         }
         
         // now add constraint between next and segment
@@ -314,7 +337,7 @@ open class GLXSegmentedControl: UIControl {
         }
         else if index == segments.count {
             // we deleted last segment
-            segments[index-1].trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+            self.trailingAnchor.constraint(equalTo: segments[index-1].trailingAnchor).isActive = true
         }
         else {
             // there is one segment before and one segment after

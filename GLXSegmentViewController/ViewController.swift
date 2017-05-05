@@ -11,6 +11,13 @@ class ViewController: UIViewController {
     
     var segmentedControl: GLXSegmentedControl!
     var margin: CGFloat = 10.0
+    
+    var segmentCount = 0
+    
+    var segmentTitles = ["Clip", "Blub", "Cloud"]
+    
+    @IBOutlet var insertButton:UIButton!
+    @IBOutlet var removeButton:UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +53,7 @@ class ViewController: UIViewController {
         self.segmentedControl.addSegment(withTitle:"Blub", onSelectionImage: UIImage(named: "bulb_light"), offSelectionImage: UIImage(named: "bulb"))
         self.segmentedControl.addSegment(withTitle:"Cloud", onSelectionImage: UIImage(named: "cloud_light"), offSelectionImage: UIImage(named: "cloud"))
         
+        segmentCount = 3
         self.segmentedControl.addTarget(self, action: #selector(selectSegmentInsegmentedControl(segmentedControl:)), for: .valueChanged)
         
         // Set segment with index 0 as selected by default
@@ -81,7 +89,41 @@ class ViewController: UIViewController {
     }
     
     @IBAction func removeSegment(_ sender:UIButton) {
-        self.segmentedControl.removeSegment(at:sender.tag)
+        let index = Int(arc4random()) % segmentCount
+        self.segmentedControl.removeSegment(at:index, animated: true)
+        segmentTitles.remove(at: index)
+        
+        insertButton.isEnabled = segmentTitles.count < 3
+        removeButton.isEnabled = segmentTitles.count > 1
+    }
+    
+    @IBAction func addSegment(_ sender:UIButton) {
+        
+        let allSegments = ["Clip", "Blub", "Cloud"]
+        var possibleInsertions = [String]()
+        for title in allSegments {
+            if segmentTitles.contains(title) {
+                continue
+            }
+            possibleInsertions.append(title)
+        }
+        
+        let titleToInsert = possibleInsertions[Int(arc4random()) % possibleInsertions.count]
+        
+        let index = Int(arc4random()) % (segmentTitles.count+1)
+        
+        if titleToInsert == "Clip" {
+            self.segmentedControl.insertSegment(withTitle:"Clip", onSelectionImage: UIImage(named: "clip_light"), offSelectionImage: UIImage(named: "clip"), index: index, animated: true)
+        }
+        else if titleToInsert == "Blub" {
+            self.segmentedControl.insertSegment(withTitle:"Blub", onSelectionImage: UIImage(named: "bulb_light"), offSelectionImage: UIImage(named: "bulb"), index: index, animated: true)
+        }
+        else {
+            self.segmentedControl.insertSegment(withTitle:"Cloud", onSelectionImage: UIImage(named: "cloud_light"), offSelectionImage: UIImage(named: "cloud"), index: index, animated: true)
+        }
+        segmentTitles.insert(titleToInsert, at: index)
+        insertButton.isEnabled = segmentTitles.count < 3
+        removeButton.isEnabled = segmentTitles.count > 1
     }
 }
 
