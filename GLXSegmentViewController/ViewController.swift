@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var segmentView: GLXSegmentedControl!
+    var segmentedControl: GLXSegmentedControl!
     var margin: CGFloat = 10.0
 
     override func viewDidLoad() {
@@ -34,50 +34,54 @@ class ViewController: UIViewController {
           Set divider Color and width here if there is a need
          */
         let segmentFrame = CGRect(x: self.margin, y: 120.0, width: self.view.frame.size.width - self.margin*2, height: 40.0)
-        self.segmentView = GLXSegmentedControl(frame: segmentFrame, segmentAppearance: appearance)
-        self.segmentView.backgroundColor = UIColor.clear
+        self.segmentedControl = GLXSegmentedControl(frame: segmentFrame, segmentAppearance: appearance)
+        self.segmentedControl.backgroundColor = UIColor.clear
         
-        self.segmentView.layer.cornerRadius = 5.0
-        self.segmentView.layer.borderColor = UIColor(white: 0.85, alpha: 1.0).cgColor
-        self.segmentView.layer.borderWidth = 1.0
+        self.segmentedControl.layer.cornerRadius = 5.0
+        self.segmentedControl.layer.borderColor = UIColor(white: 0.85, alpha: 1.0).cgColor
+        self.segmentedControl.layer.borderWidth = 1.0
 
         // Add segments
-        self.segmentView.addSegmentWithTitle("Clip", onSelectionImage: UIImage(named: "clip_light"), offSelectionImage: UIImage(named: "clip"))
-        self.segmentView.addSegmentWithTitle("Blub", onSelectionImage: UIImage(named: "bulb_light"), offSelectionImage: UIImage(named: "bulb"))
-        self.segmentView.addSegmentWithTitle("Cloud", onSelectionImage: UIImage(named: "cloud_light"), offSelectionImage: UIImage(named: "cloud"))
+        self.segmentedControl.addSegment(withTitle:"Clip", onSelectionImage: UIImage(named: "clip_light"), offSelectionImage: UIImage(named: "clip"))
+        self.segmentedControl.addSegment(withTitle:"Blub", onSelectionImage: UIImage(named: "bulb_light"), offSelectionImage: UIImage(named: "bulb"))
+        self.segmentedControl.addSegment(withTitle:"Cloud", onSelectionImage: UIImage(named: "cloud_light"), offSelectionImage: UIImage(named: "cloud"))
         
-        self.segmentView.addTarget(self, action: #selector(selectSegmentInSegmentView(segmentView:)), for: .valueChanged)
+        self.segmentedControl.addTarget(self, action: #selector(selectSegmentInsegmentedControl(segmentedControl:)), for: .valueChanged)
         
         // Set segment with index 0 as selected by default
-        self.segmentView.selectedSegmentIndex = 0
-        self.view.addSubview(self.segmentView)
+        self.segmentedControl.selectedSegmentIndex = 0
+        self.view.addSubview(self.segmentedControl)
     }
     
     // GLXSegment selector for .ValueChanged
-    func selectSegmentInSegmentView(segmentView: GLXSegmentedControl) {
+    func selectSegmentInsegmentedControl(segmentedControl: GLXSegmentedControl) {
         /*
         Replace the following line to implement what you want the app to do after the segment gets tapped.
         */
-        print("Select segment at index: \(segmentView.selectedSegmentIndex)")
+        print("Select segment at index: \(segmentedControl.selectedSegmentIndex)")
     }
     
     override func willAnimateRotation(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
         /*
-        MARK: Replace the following line to your own frame setting for segmentView.
+        MARK: Replace the following line to your own frame setting for segmentedControl.
         */
         if toInterfaceOrientation == UIInterfaceOrientation.landscapeLeft || toInterfaceOrientation == UIInterfaceOrientation.landscapeRight {
             
-            self.segmentView.organiseMode = .vertical
-            self.segmentView.segmentAppearance.contentVerticalMargin = 25.0
-            self.segmentView.frame = CGRect(x: self.view.frame.size.width/2 - 40.0, y: 100.0, width: 80.0, height: 220.0)
+            self.segmentedControl.organiseMode = .vertical
+            self.segmentedControl.segmentAppearance.contentVerticalMargin = 25.0
+            self.segmentedControl.frame = CGRect(x: self.view.frame.size.width/2 - 40.0, y: 100.0, width: 80.0, height: 220.0)
         }
         else {
             
-            self.segmentView.organiseMode = .horizontal
-            self.segmentView.segmentAppearance.contentVerticalMargin = 10.0
-            self.segmentView.frame = CGRect(x: self.margin, y: 120.0, width: self.view.frame.size.width - self.margin*2, height: 40.0)
+            self.segmentedControl.organiseMode = .horizontal
+            self.segmentedControl.segmentAppearance.contentVerticalMargin = 10.0
+            self.segmentedControl.frame = CGRect(x: self.margin, y: 120.0, width: self.view.frame.size.width - self.margin*2, height: 40.0)
             
         }
+    }
+    
+    @IBAction func removeSegment(_ sender:UIButton) {
+        self.segmentedControl.removeSegment(at:sender.tag)
     }
 }
 

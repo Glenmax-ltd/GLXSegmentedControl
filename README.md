@@ -1,4 +1,5 @@
 # GLXSegmentedControl
+[![CocoaPods](https://img.shields.io/cocoapods/v/GLXSegmentedControl.svg)](https://cocoapods.org/pods/GLXSegmentedControl) [![license MIT](http://img.shields.io/badge/license-MIT-orange.png)](http://opensource.org/licenses/MIT) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 <p align="center"><img src ="/Screenshots/example_4.png"/></p>
 
 ## Description

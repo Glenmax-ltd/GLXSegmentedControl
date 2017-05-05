@@ -82,9 +82,6 @@ open class GLXSegmentedControl: UIControl {
 
     fileprivate var segments: [GLXSegment] = []
     fileprivate var selectedSegment: GLXSegment?
-    
-    fileprivate var trailingConstraint: NSLayoutConstraint? // this is used as the last contraint for segment
-
 
     // INITIALISER
     required public init?(coder aDecoder: NSCoder) {
@@ -124,11 +121,11 @@ open class GLXSegmentedControl: UIControl {
     }
 
     // MARK: Add Segment
-    open func addSegmentWithTitle(_ title: String?, onSelectionImage: UIImage?, offSelectionImage: UIImage?) {
-        self.insertSegmentWithTitle(title, onSelectionImage: onSelectionImage, offSelectionImage: offSelectionImage, index: self.segments.count)
+    open func addSegment(withTitle title: String?, onSelectionImage: UIImage?, offSelectionImage: UIImage?) {
+        self.insertSegment(withTitle:title, onSelectionImage: onSelectionImage, offSelectionImage: offSelectionImage, index: self.segments.count)
     }
 
-    open func insertSegmentWithTitle(_ title: String?, onSelectionImage: UIImage?, offSelectionImage: UIImage?, index: Int) {
+    open func insertSegment(withTitle title: String?, onSelectionImage: UIImage?, offSelectionImage: UIImage?, index: Int) {
 
         let segment = GLXSegment(appearance: self.segmentAppearance)
         
@@ -145,69 +142,37 @@ open class GLXSegmentedControl: UIControl {
         }
         segment.setupUIElements()
         
-        self.resetSegmentIndicesWithIndex(index, by: 1)
+        self.resetSegmentIndices(withIndex: index, by: 1)
         self.segments.insert(segment, at: index)
 
         self.addSubview(segment)
         
         // now we setup constraints for segment
         
-        if self.organiseMode == .horizontal {
-            segment.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-            segment.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-            
-            if segments.count == 1 {
-                // this is first segment so we set constraint to leading anchor
-                segment.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-            }
-            else {
-                // trailing contraint was set before so now we remove it
-                // because we need to set it to new segment
-                trailingConstraint?.isActive = false
-                let previousSegment = segments[segments.count - 2]
-                segment.leadingAnchor.constraint(equalTo: previousSegment.trailingAnchor, constant: self.dividerWidth).isActive = true
-                segment.widthAnchor.constraint(equalTo: previousSegment.widthAnchor).isActive = true
-                trailingConstraint = segment.trailingAnchor.constraint(equalTo: self.trailingAnchor)
-                trailingConstraint?.isActive = true
-            }
-        }
-        else {
-            segment.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-            segment.trailingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-            
-            if segments.count == 1 {
-                // this is first segment so we set constraint to leading anchor
-                segment.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-            }
-            else {
-                // trailing contraint was set before so now we remove it
-                // because we need to set it to new segment
-                trailingConstraint?.isActive = false
-                let previousSegment = segments[segments.count - 2]
-                segment.topAnchor.constraint(equalTo: previousSegment.bottomAnchor, constant: self.dividerWidth).isActive = true
-                segment.heightAnchor.constraint(equalTo: previousSegment.heightAnchor).isActive = true
-                trailingConstraint = segment.bottomAnchor.constraint(equalTo: self.bottomAnchor)
-                trailingConstraint?.isActive = true
-            }
-        }
+        self.updateConstraintsForSegmentInsertion(at: index)
     }
     
     // MARK: Remove Segment
-    open func removeSegmentAtIndex(_ index: Int) {
+    open func removeSegment(at index: Int) {
         assert(index >= 0 && index < self.segments.count, "Index (\(index)) is out of range")
         
         if index == self.selectedSegmentIndex {
             self.selectedSegmentIndex = UISegmentedControlNoSegment
         }
-        self.resetSegmentIndicesWithIndex(index, by: -1)
+        self.resetSegmentIndices(withIndex: index, by: -1)
         let segment = self.segments.remove(at: index)
         segment.removeFromSuperview()
         
-        // FIXME: update autolayout constraints
-        // otherwise this function does not perform well!
+        guard segments.count > 0 else {
+            return
+        }
+        
+        // if some segments remain we need to update constraints
+        
+        self.updateConstraintsForSegmentRemoval(at: index)
     }
     
-    fileprivate func resetSegmentIndicesWithIndex(_ index: Int, by: Int) {
+    fileprivate func resetSegmentIndices(withIndex index: Int, by: Int) {
         if index < self.segments.count {
             for i in index..<self.segments.count {
                 let segment = self.segments[i]
@@ -290,16 +255,158 @@ open class GLXSegmentedControl: UIControl {
             }
         }
     }
+    
+    func updateConstraintsForSegmentInsertion(at index:Int) {
+        let itemBefore:UIView
+        let itemAfter:UIView
+        
+        let itemBeforeConstant:CGFloat
+        let itemAfterConstant:CGFloat
+        
+        let segment = segments[index]
+        
+        if self.organiseMode == .horizontal {
+            segment.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+            segment.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+            
+            let itemBeforeAnchor:NSLayoutXAxisAnchor
+            let itemAfterAnchor:NSLayoutXAxisAnchor
+            
+            if index == 0 {
+                itemBefore = self
+                itemBeforeAnchor = self.leadingAnchor
+                itemBeforeConstant = 0
+            }
+            else {
+                itemBefore = segments[index-1]
+                itemBeforeAnchor = itemBefore.trailingAnchor
+                itemBeforeConstant = dividerWidth
+            }
+            
+            if index == segments.count - 1 {
+                itemAfter = self
+                itemAfterAnchor = self.trailingAnchor
+                itemAfterConstant = 0
+            }
+            else {
+                itemAfter = segments[index+1]
+                itemAfterAnchor = itemAfter.leadingAnchor
+                itemAfterConstant = dividerWidth
+            }
+            
+            itemAfterAnchor.constraint(equalTo: segment.trailingAnchor, constant: itemAfterConstant).isActive = true
+            segment.leadingAnchor.constraint(equalTo: itemBeforeAnchor, constant: itemBeforeConstant).isActive = true
+            
+            if itemAfter != self {
+                itemAfter.widthAnchor.constraint(equalTo: segment.widthAnchor).isActive = true
+            }
+            
+            if itemBefore != self {
+                segment.widthAnchor.constraint(equalTo: itemBefore.widthAnchor).isActive = true
+            }
+            
+            
+        }
+        else {
+            segment.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+            segment.trailingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+            
+            let itemBeforeAnchor:NSLayoutYAxisAnchor
+            let itemAfterAnchor:NSLayoutYAxisAnchor
+            
+            if index == 0 {
+                itemBefore = self
+                itemBeforeAnchor = self.topAnchor
+                itemBeforeConstant = 0
+            }
+            else {
+                itemBefore = segments[index-1]
+                itemBeforeAnchor = itemBefore.bottomAnchor
+                itemBeforeConstant = dividerWidth
+            }
+            
+            if index == segments.count - 1 {
+                itemAfter = self
+                itemAfterAnchor = self.bottomAnchor
+                itemAfterConstant = 0
+            }
+            else {
+                itemAfter = segments[index+1]
+                itemAfterAnchor = itemAfter.topAnchor
+                itemAfterConstant = dividerWidth
+            }
+            
+            if segments.count > index+2 {
+                // we have a segment after
+            }
+            
+            itemAfterAnchor.constraint(equalTo: segment.bottomAnchor, constant: itemAfterConstant).isActive = true
+            segment.topAnchor.constraint(equalTo: itemBeforeAnchor, constant: itemBeforeConstant).isActive = true
+            
+            if itemAfter != self {
+                itemAfter.heightAnchor.constraint(equalTo: segment.heightAnchor).isActive = true
+            }
+            
+            if itemBefore != self {
+                itemBefore.heightAnchor.constraint(equalTo: segment.heightAnchor).isActive = true
+            }
+        }
+        
+        let constraintsToRemove = self.constraints.filter({ (constraint) -> Bool in
+            return (constraint.firstItem as! NSObject == itemAfter) && (constraint.secondItem as! NSObject == itemBefore)
+        })
+        
+        for constraint in constraintsToRemove {
+            constraint.isActive = false
+        }
+    }
+    
+    func updateConstraintsForSegmentRemoval(at index:Int) {
+        if self.organiseMode == .horizontal {
+            if index == 0 {
+                // we deleted first segment
+                segments[0].leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+            }
+            else if index == segments.count {
+                // we deleted last segment
+                segments[index-1].trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+            }
+            else {
+                // there is one segment before and one segment after
+                let segmentBefore = segments[index-1]
+                let segmentAfter = segments[index]
+                segmentAfter.leadingAnchor.constraint(equalTo: segmentBefore.trailingAnchor, constant: dividerWidth).isActive = true
+                segmentBefore.widthAnchor.constraint(equalTo: segmentAfter.widthAnchor).isActive = true
+            }
+        }
+        else {
+            if index == 0 {
+                // we deleted first segment
+                segments[0].topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+            }
+            else if index == segments.count {
+                // we deleted last segment
+                segments[index-1].bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+            }
+            else {
+                // there is one segment before and one segment after
+                let segmentBefore = segments[index-1]
+                let segmentAfter = segments[index]
+                segmentAfter.topAnchor.constraint(equalTo: segmentBefore.bottomAnchor, constant: dividerWidth).isActive = true
+                segmentBefore.heightAnchor.constraint(equalTo: segmentAfter.heightAnchor).isActive = true
+            }
+        }
+    }
 
     // MARK: Drawing Segment Dividers
     override open func draw(_ rect: CGRect) {
         super.draw(rect)
 
         let context = UIGraphicsGetCurrentContext()!
-        self.drawDividerWithContext(context)
+        self.drawDivider(withContext: context)
     }
 
-    fileprivate func drawDividerWithContext(_ context: CGContext) {
+    fileprivate func drawDivider(withContext context: CGContext) {
 
         context.saveGState()
 
