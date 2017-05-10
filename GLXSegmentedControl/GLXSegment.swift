@@ -41,7 +41,7 @@ open class GLXSegment: UIView {
     open var offSelectionImage: UIImage?
     
     // Appearance
-    open var appearance: GLXSegmentAppearance?
+    open var appearance: GLXSegmentAppearance
     
     internal var didSelectSegment: ((_ segment: GLXSegment)->())?
     
@@ -51,7 +51,13 @@ open class GLXSegment: UIView {
     // Init
     internal init(appearance: GLXSegmentAppearance?) {
         
-        self.appearance = appearance
+        if let app = appearance {
+            self.appearance = app
+        }
+        
+        else {
+            self.appearance = GLXSegmentAppearance()
+        }
         
         super.init(frame: CGRect.zero)
     }
@@ -63,9 +69,7 @@ open class GLXSegment: UIView {
     internal func setupUIElements() {
         
         var verticalMargin: CGFloat = 0.0
-        if let appearance = self.appearance {
-            verticalMargin = appearance.contentVerticalMargin
-        }
+        verticalMargin = appearance.contentVerticalMargin
         
         let imagePresent = (self.offSelectionImage != nil) || (self.onSelectionImage != nil)
         var titlePresent = false
@@ -98,7 +102,7 @@ open class GLXSegment: UIView {
             self.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
             self.topAnchor.constraint(lessThanOrEqualTo: view.topAnchor, constant:-verticalMargin).isActive = true
             self.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-            self.leadingAnchor.constraint(lessThanOrEqualTo: view.leadingAnchor, constant:-2).isActive = true
+            self.leadingAnchor.constraint(lessThanOrEqualTo: view.leadingAnchor, constant:-appearance.contentHorizontalMargin).isActive = true
         }
         else if imagePresent {
             // only image is present
@@ -115,15 +119,13 @@ open class GLXSegment: UIView {
             self.centerXAnchor.constraint(equalTo: self.label.centerXAnchor).isActive = true
             self.centerYAnchor.constraint(equalTo: self.label.centerYAnchor).isActive = true
             self.topAnchor.constraint(lessThanOrEqualTo: self.label.topAnchor, constant: -verticalMargin).isActive = true
-            self.leadingAnchor.constraint(lessThanOrEqualTo: self.label.leadingAnchor, constant:-2).isActive = true
+            self.leadingAnchor.constraint(lessThanOrEqualTo: self.label.leadingAnchor, constant:-appearance.contentHorizontalMargin).isActive = true
         }
         
-        if let appearance = self.appearance {
-            self.backgroundColor = appearance.segmentOffSelectionColor
-            if titlePresent {
-                self.label.font = appearance.titleOffSelectionFont
-                self.label.textColor = appearance.titleOffSelectionColor
-            }
+        self.backgroundColor = appearance.segmentOffSelectionColor
+        if titlePresent {
+            self.label.font = appearance.titleOffSelectionFont
+            self.label.textColor = appearance.titleOffSelectionColor
         }
         
     }
@@ -132,15 +134,15 @@ open class GLXSegment: UIView {
     internal func setSelected(_ selected: Bool) {
         self.isSelected = selected
         if selected == true {
-            self.backgroundColor = self.appearance?.segmentOnSelectionColor
-            self.label.textColor = self.appearance?.titleOnSelectionColor
-            self.label.font = self.appearance?.titleOnSelectionFont
+            self.backgroundColor = self.appearance.segmentOnSelectionColor
+            self.label.textColor = self.appearance.titleOnSelectionColor
+            self.label.font = self.appearance.titleOnSelectionFont
             self.imageView.image = self.onSelectionImage
         }
         else {
-            self.backgroundColor = self.appearance?.segmentOffSelectionColor
-            self.label.textColor = self.appearance?.titleOffSelectionColor
-            self.label.font = self.appearance?.titleOffSelectionFont
+            self.backgroundColor = self.appearance.segmentOffSelectionColor
+            self.label.textColor = self.appearance.titleOffSelectionColor
+            self.label.font = self.appearance.titleOffSelectionFont
             self.imageView.image = self.offSelectionImage
         }
     }
@@ -148,7 +150,7 @@ open class GLXSegment: UIView {
     // MARK: Handle touch
     override open  func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if self.isSelected == false {
-            self.backgroundColor = self.appearance?.segmentTouchDownColor
+            self.backgroundColor = self.appearance.segmentTouchDownColor
         }
     }
     
