@@ -332,7 +332,7 @@ open class GLXSegmentedControl: UIControl {
         else {
             
             segment.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-            segment.trailingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+            segment.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
             
         }
     }
