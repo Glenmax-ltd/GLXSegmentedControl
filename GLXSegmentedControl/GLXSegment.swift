@@ -24,7 +24,7 @@ open class GLXSegment: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.adjustsFontSizeToFitWidth = true
         label.baselineAdjustment = .alignCenters
-        label.setContentCompressionResistancePriority(UILayoutPriorityDefaultLow, for: .horizontal)
+        label.setContentCompressionResistancePriority(UILayoutPriority.defaultLow, for: .horizontal)
         return label
     }()
     
@@ -54,7 +54,7 @@ open class GLXSegment: UIView {
         if let app = appearance {
             self.appearance = app
         }
-        
+            
         else {
             self.appearance = GLXSegmentAppearance()
         }

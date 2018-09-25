@@ -11,7 +11,7 @@ import UIKit
 extension UILabel {
     
     func fontFitsCurrentFrame(_ font:UIFont) -> Bool {
-        let attributes = [NSFontAttributeName:font]
+        let attributes = [NSAttributedStringKey.font:font]
         if let size = self.text?.boundingRect(with: CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude), options: .usesLineFragmentOrigin, attributes: attributes, context: nil) {
             if size.width > frame.size.width {
                 return false
@@ -31,11 +31,11 @@ public enum GLXSegmentOrganiseMode: Int {
 }
 
 open class GLXSegmentedControl: UIControl {
-
+    
     open var segmentAppearance: GLXSegmentAppearance
     
     open var enforceEqualFontForLabels = true
-
+    
     // Divider Color & width
     open var dividerColor: UIColor {
         get {
@@ -47,7 +47,7 @@ open class GLXSegmentedControl: UIControl {
             return self.segmentAppearance.dividerWidth
         }
     }
-
+    
     open var selectedSegmentIndex: Int {
         get {
             if let segment = self.selectedSegment {
@@ -65,7 +65,7 @@ open class GLXSegmentedControl: UIControl {
             }
         }
     }
-
+    
     open var organiseMode: GLXSegmentOrganiseMode = .horizontal {
         didSet {
             if self.organiseMode != oldValue {
@@ -73,39 +73,39 @@ open class GLXSegmentedControl: UIControl {
             }
         }
     }
-
+    
     open var numberOfSegments: Int {
         get {
             return segments.count
         }
     }
-
+    
     fileprivate var segments: [GLXSegment] = []
     fileprivate var selectedSegment: GLXSegment?
-
+    
     // INITIALISER
     required public init?(coder aDecoder: NSCoder) {
         self.segmentAppearance = GLXSegmentAppearance()
         super.init(coder: aDecoder)
         self.layer.masksToBounds = true
     }
-
+    
     override public init(frame: CGRect) {
         self.segmentAppearance = GLXSegmentAppearance()
         super.init(frame: frame)
         self.backgroundColor = UIColor.clear
         self.layer.masksToBounds = true
     }
-
+    
     public init(frame: CGRect, segmentAppearance: GLXSegmentAppearance) {
         self.segmentAppearance = segmentAppearance
         super.init(frame: frame)
-
+        
         self.backgroundColor = UIColor.clear
         self.layer.masksToBounds = true
     }
     
-
+    
     // MARK: Actions
     // MARK: Select/deselect Segment
     fileprivate func selectSegment(_ segment: GLXSegment, fireAction:Bool = false) {
@@ -119,14 +119,14 @@ open class GLXSegmentedControl: UIControl {
         self.selectedSegment?.setSelected(false)
         self.selectedSegment = nil
     }
-
+    
     // MARK: Add Segment
     open func addSegment(withTitle title: String?, onSelectionImage: UIImage?, offSelectionImage: UIImage?, animated:Bool = false) {
         self.insertSegment(withTitle:title, onSelectionImage: onSelectionImage, offSelectionImage: offSelectionImage, index: self.segments.count, animated: animated)
     }
-
+    
     open func insertSegment(withTitle title: String?, onSelectionImage: UIImage?, offSelectionImage: UIImage?, index: Int, animated:Bool = false) {
-
+        
         let segment = GLXSegment(appearance: self.segmentAppearance)
         
         segment.translatesAutoresizingMaskIntoConstraints = false
@@ -144,7 +144,7 @@ open class GLXSegmentedControl: UIControl {
         
         self.resetSegmentIndices(withIndex: index, by: 1)
         self.segments.insert(segment, at: index)
-
+        
         self.addSubview(segment)
         
         // now we setup constraints for segment
@@ -197,7 +197,7 @@ open class GLXSegmentedControl: UIControl {
         assert(index >= 0 && index < self.segments.count, "Index (\(index)) is out of range")
         return segments[index]
     }
-
+    
     // MARK: UI
     // MARK: Update layout
     open override func layoutSubviews() {
@@ -332,7 +332,7 @@ open class GLXSegmentedControl: UIControl {
         else {
             
             segment.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-            segment.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+            segment.trailingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
             
         }
     }
@@ -413,28 +413,28 @@ open class GLXSegmentedControl: UIControl {
         }
         
     }
-
+    
     // MARK: Drawing Segment Dividers
     override open func draw(_ rect: CGRect) {
         super.draw(rect)
-
+        
         let context = UIGraphicsGetCurrentContext()!
         self.drawDivider(withContext: context)
     }
-
+    
     fileprivate func drawDivider(withContext context: CGContext) {
-
+        
         context.saveGState()
-
+        
         if self.segments.count > 1 {
             let path = CGMutablePath()
-
+            
             if self.organiseMode == .horizontal {
                 var originX: CGFloat = self.segments[0].frame.size.width + self.dividerWidth/2.0
                 for index in 1..<self.segments.count {
                     path.move(to: CGPoint(x: originX, y: 0.0))
                     path.addLine(to: CGPoint(x: originX, y: self.frame.size.height))
-
+                    
                     originX += self.segments[index].frame.width + self.dividerWidth
                 }
             }
@@ -443,11 +443,11 @@ open class GLXSegmentedControl: UIControl {
                 for index in 1..<self.segments.count {
                     path.move(to: CGPoint(x: 0.0, y: originY))
                     path.addLine(to: CGPoint(x: self.frame.size.width, y: originY))
-
+                    
                     originY += self.segments[index].frame.height + self.dividerWidth
                 }
             }
-
+            
             context.addPath(path)
             context.setStrokeColor(self.dividerColor.cgColor)
             context.setLineWidth(self.dividerWidth)
