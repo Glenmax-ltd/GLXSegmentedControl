@@ -62,7 +62,7 @@ class ViewController: UIViewController {
     }
     
     // GLXSegment selector for .ValueChanged
-    func selectSegmentInsegmentedControl(segmentedControl: GLXSegmentedControl) {
+    @objc func selectSegmentInsegmentedControl(segmentedControl: GLXSegmentedControl) {
         /*
         Replace the following line to implement what you want the app to do after the segment gets tapped.
         */

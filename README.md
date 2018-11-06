@@ -3,8 +3,8 @@
 <p align="center"><img src ="/Screenshots/example_4.png"/></p>
 
 ## Description
-- Custom segmented control for iOS 9 and above.
-- Written in Swift.
+- Custom segmented control for iOS 10 and above.
+- Written in Swift 4.2, requires Xcode 10 or newer. For Swift 4.1 use version 2.3.0. For Swift 3 use 2.2.4.
 - Supports both images and text.
 - Supports vertically organised segments.
 - If font size needs to be lowered for one segment, it can automatically adjust font in other segments.

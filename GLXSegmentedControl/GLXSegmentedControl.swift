@@ -11,8 +11,8 @@ import UIKit
 extension UILabel {
     
     func fontFitsCurrentFrame(_ font:UIFont) -> Bool {
-        let attributes = [NSFontAttributeName:font]
-        if let size = self.text?.boundingRect(with: CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude), options: .usesLineFragmentOrigin, attributes: attributes, context: nil) {
+        let attributes = [convertFromNSAttributedStringKey(NSAttributedString.Key.font):font]
+        if let size = self.text?.boundingRect(with: CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude), options: .usesLineFragmentOrigin, attributes: convertToOptionalNSAttributedStringKeyDictionary(attributes), context: nil) {
             if size.width > frame.size.width {
                 return false
             }
@@ -54,7 +54,7 @@ open class GLXSegmentedControl: UIControl {
                 return segment.index
             }
             else {
-                return UISegmentedControlNoSegment
+                return UISegmentedControl.noSegment
             }
         }
         set(newIndex) {
@@ -162,7 +162,7 @@ open class GLXSegmentedControl: UIControl {
         assert(index >= 0 && index < self.segments.count, "Index (\(index)) is out of range")
         
         if index == self.selectedSegmentIndex {
-            self.selectedSegmentIndex = UISegmentedControlNoSegment
+            self.selectedSegmentIndex = UISegmentedControl.noSegment
         }
         self.resetSegmentIndices(withIndex: index, by: -1)
         let segment = self.segments.remove(at: index)
@@ -456,4 +456,15 @@ open class GLXSegmentedControl: UIControl {
         
         context.restoreGState()
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
+	return input.rawValue
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
 }
