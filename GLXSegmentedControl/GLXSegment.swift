@@ -13,7 +13,7 @@ open class GLXSegment: UIView {
     // UI components
     fileprivate lazy var imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = UIViewContentMode.scaleAspectFit
+        imageView.contentMode = UIView.ContentMode.scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -24,7 +24,7 @@ open class GLXSegment: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.adjustsFontSizeToFitWidth = true
         label.baselineAdjustment = .alignCenters
-        label.setContentCompressionResistancePriority(UILayoutPriorityDefaultLow, for: .horizontal)
+        label.setContentCompressionResistancePriority(UILayoutPriority.defaultLow, for: .horizontal)
         return label
     }()
     
